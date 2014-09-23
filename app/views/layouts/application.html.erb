@@ -8,7 +8,15 @@
 </head>
 <body>
 
-<%= yield %>
+<div class="container">
+	<h1>Nom Nom Now</h1>
+	<% if signed_in? %>
+		<h3>Welcome,  <%= current_user.username %></h3>
+		<%= button_to "Sign Out", session_url, :method => :delete %>
+	<% end %>
+
+	<%= yield %>
+</div>
 
 </body>
 </html>

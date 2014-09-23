@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+	position: relative;
+	background-image: url(http://westchestersocialmedia.com/wp-content/uploads/2012/03/Simplicious-Feb-2012-178-proof.jpg);
+	background-size: 100%;
+	z-index: 1;
+}
+
+.container {
+	width: 500px;
+	margin-left: 200px;
+	position: absolute;
+	left: 30%;
+	top: 200px;
+	background: white;
+	
+	opacity: 0.8;
+	z-index: 2;
+}

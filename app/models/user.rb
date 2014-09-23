@@ -5,10 +5,10 @@ class User < ActiveRecord::Base
 
     validates :username, :password_digest, :session_token, presence: true
     validates :password, length: { minimum: 6, allow_nil: true }
-    validates :session_token, :name, uniqueness: true
+    validates :session_token, :username, uniqueness: true
 
-    def self.find_by_credentials(name, password)
-      user = User.find_by(name: name)
+    def self.find_by_credentials(username, password)
+      user = User.find_by(username: username)
       user.try(:is_password?, password) ? user : nil
     end
 

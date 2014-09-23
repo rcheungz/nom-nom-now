@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      sign_in(@user)
-      redirect_to subs_url
+      sign_in!(@user)
+      redirect_to api_restaurants_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
