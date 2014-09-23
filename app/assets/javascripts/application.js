@@ -10,17 +10,17 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-// require jquery
-// require jquery_ujs
-// require turbolinks
-// require backbone
-// require bootstrap
-// require jquery.serializejson
-// require nom_nom.js
-// require_tree ../templates
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require backbone
+//= require bootstrap
+//= require jquery.serializejson
+//= require nom_nom.js
+//= require_tree .
+//= require_tree ../templates
 // require_tree ./utils
-// require_tree ./models
-// require_tree ./collections
-// require_tree ./views
-// require_tree ./routers
-// require_tree .
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers

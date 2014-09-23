@@ -1,13 +1,15 @@
 <h1>Sign In</h1>
 
 <form action="/session" method="post">
+	<div class="form-group">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label>Email<br>
-    <input name="user[username]" type="text"><br>
+    <input name="user[username]" class="form-control" type="text"><br>
   </label><br>
   <label>Password<br>
-    <input name="user[password]" type="password"><br>
+    <input name="user[password]" class="form-control" type="password"><br>
   </label><br>
-  <input type="submit" value="Submit" class="btn btn-primary"><br>
+  <!-- <input type="submit" value="Submit" class="btn btn-primary"><br> -->
+</div>
 	Not a member? Sign Up <%= link_to "Here", new_user_url %>
 </form>
