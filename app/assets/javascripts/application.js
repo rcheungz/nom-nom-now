@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.serializejson
+//= require underscore
 //= require backbone
 //= require bootstrap
-//= require jquery.serializejson
 //= require nom_nom.js
 //= require_tree .
 //= require_tree ../templates
