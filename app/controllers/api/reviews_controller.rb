@@ -23,11 +23,11 @@ class Api::ReviewsController < ApplicationController
   def udpate
     @review = current_user.reviews.find(params[:id])#problem?
     
-    if @review.update_attributes(review_params) {
+    if @review.update_attributes(review_params) 
       render json: @review
-    } else {
+    else 
       render json: @review.errors.full_messages, status: :unprocessable_entity 
-    }
+    end
   end
   
   private
