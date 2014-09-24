@@ -1,4 +1,4 @@
-NomNom.Routers.Router = Backbone.Router.exnted({
+NomNom.Routers.Router = Backbone.Router.extend({
 	initialize: function (options) {
 		this.$rootEl = options.$rootEl;
 	},
@@ -9,8 +9,5 @@ NomNom.Routers.Router = Backbone.Router.exnted({
 		"restaurants/:id": "show"
 	},
 	
-	search: function () {
-		var 
-	}
 	
 });
