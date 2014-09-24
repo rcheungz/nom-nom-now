@@ -1,6 +1,6 @@
 NomNom.Collections.Restaurants = Backbone.Collection.extend({
 	model: NomNom.Models.Restaurant,
-	url: "/api/restaurants",
+	url: "/api/restaurants", 
 	
 	getOrFetch: function (id) {
 		var restaurant = this.get(id);

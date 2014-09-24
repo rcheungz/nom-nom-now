@@ -1,19 +1,39 @@
 class Api::ReviewsController < ApplicationController
   
-  def index
-    @restaurants = Restaurant.all;
-    render :index
+  def create
+    @review = current_user.reviews.new(review_params)
+    
+    if @review.save
+      render json: @review
+    else
+      render json: @review.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+  
+  def destroy
+    review = current_user.reviews.find(params[:id])
+    review.try(:destroy)
+    render json: {}
   end
   
   def show
-    @restaurant = Restaurant.find(params[:id])
+    @review = Review.find(params[:id])
+  end
+  
+  def udpate
+    @review = current_user.reviews.find(params[:id])
     
-    render :show
+    if @review.update_attributes(review_params) {
+      render json: @review
+    } else {
+      render json: @review.errors.full_messages, status: :unprocessable_entity 
+    }
   end
   
   private
   
-  def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :category)
+  def review_params
+    params.require(:review).permit(:body, :restaurant_id)
   end
+  
 end
