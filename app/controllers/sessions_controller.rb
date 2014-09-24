@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
     if @user
       sign_in!(@user)
-      redirect_to api_restaurants_url
+      redirect_to root_url
     else
       flash.now[:errors] = ["Invalid email and/or password"]
       render :new

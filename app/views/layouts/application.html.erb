@@ -18,10 +18,32 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">NomNom</a>
+			<% if signed_in? %>
+				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+								 <div class="nav nav-pills nav-stacked">
+									<li><a href="#">Profile</a></li>
+			            <li><%= button_to "Sign Out", session_url, :method => :delete %></li>
+								</div>
+		          </ul>
+		        </li>
+					</ul>
+				</div>
+			<% end %>
     </div>
 	</div>
 </nav>
 
+
+
+<% if flash[:errors] %>
+<div class="alert alert-danger col-md-4 col-md-offset-4" role="alert">
+	<%= flash[:errors] %>
+</div>
+<% end %>
 
 <div class="container">
 	<div class="logo"></div>
@@ -33,7 +55,40 @@
 		<% end %>
 	</div>
 	<%= yield %>
-</div>
 
+</div>
 </body>
 </html>
+
+
+
+
+	<!-- <div class="slideshow">
+		<div class="css-slideshow">
+			<figure>
+				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-css3.jpg" alt="class-header-css3" class="alignnone size-full wp-image-172" />
+			</figure>
+			<figure>
+				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-semantics.jpg" alt="class-header-semantics" class="alignnone size-full wp-image-179" />
+			</figure>
+			<figure>
+				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-offline.jpg" alt="class-header-offline" class="alignnone size-large wp-image-178" />
+			</figure>
+			<figure>
+				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-device.jpg" alt="class-header-device" class="alignnone size-full wp-image-177" />
+			</figure>
+			<figure>
+				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-connectivity.jpg" alt="class-header-connectivity" class="alignnone size-large wp-image-176" />
+			</figure>
+			<figure>
+				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-multimedia.jpg" alt="class-header-multimedia" class="alignnone size-large wp-image-175" />
+			</figure>
+			<figure>
+				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-3d.jpg" alt="class-header-3d" class="alignnone size-large wp-image-174" />
+			</figure>
+			<figure>
+				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-performance.jpg" alt="class-header-performance" class="alignnone size-large wp-image-173" />
+			</figure>
+		  </div>
+		<p class="css-slideshow-attr"><a href="http://www.w3.org/html/logo/" target="_top">Images and captions are from the W3C</a></p>
+	</div> -->

@@ -1,6 +1,6 @@
 <h1>Sign In</h1>
 
-<form action="/session" method="post">
+<form class="form-horizontal" action="/session" method="post">
 	<div class="form-group">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label>Email<br>
@@ -10,6 +10,13 @@
     <input name="user[password]" class="form-control" type="password"><br>
   </label><br>
   <button type="submit" value="Submit" class="btn btn-primary">Sign In</button><br>
+	
+	<!-- GUEST LOG IN BREAKS REGULAR LOG IN -->
+	<button type="submit" class='btn btn-primary'>
+		Guest Login
+		<input type="hidden" name="user[username]" value="jeck@dinosaurs.com">
+		<input type="hidden" name="user[password]" value="password">
+	</button>
 </div>
 	Not a member? Sign Up <%= link_to "Here", new_user_url %>
 </form>
