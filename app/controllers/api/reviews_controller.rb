@@ -21,7 +21,7 @@ class Api::ReviewsController < ApplicationController
   end
   
   def udpate
-    @review = current_user.reviews.find(params[:id])
+    @review = current_user.reviews.find(params[:id])#problem?
     
     if @review.update_attributes(review_params) {
       render json: @review
