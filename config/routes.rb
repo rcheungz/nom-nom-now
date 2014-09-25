@@ -8,6 +8,6 @@ NomNom::Application.routes.draw do
     namespace :api, defaults: { format: :json } do
       resources :restaurants, only: [:show, :index]
       resources :reviews
-      resources :categories, only: [:show]
+      resources :categories, only: [:show, :index]
     end
 end
