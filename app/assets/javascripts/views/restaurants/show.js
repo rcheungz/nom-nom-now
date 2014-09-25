@@ -3,6 +3,7 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 	
 	initialize: function () {
 		this.listenTo(this.model, "sync", this.render);
+		this.listenTo(this.model, "sync", this.calculateRating);
 		this.listenTo(this.model.reviews(), "add", this.addReview);
 		this.renderReviews();
 		this.renderReviewsForm();
@@ -15,9 +16,25 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 		this.addSubview(".review-list", reviewView);
 	},
 	
+	roundToHalf: function (num) {
+	    num = Math.round(num*2)/2;
+	    return num;
+	},
+
+	calculateRating: function () {
+		var sum = 0;
+		var nums = 0;
+		this.model.reviews().each( function (review) {
+			nums++;
+			sum += review.attributes.rating;
+		});
+		return this.roundToHalf(sum / nums);
+	},
+	
 	render: function () {
 		var renderedContent = this.template({
-			restaurant: this.model
+			restaurant: this.model,
+			rating: this.calculateRating()
 		});
 		this.$el.html(renderedContent);
 		this.attachSubviews();

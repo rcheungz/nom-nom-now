@@ -1,7 +1,31 @@
 <div class="restaurant-show">
+	
 	<h1><%= restaurant.escape("name") %></h1>
 	<h1><%= restaurant.escape("address") %></h1>
 	
+	<% if (rating === 1) { %>
+		<img class="rating" src="assets/1star.png">  
+	<% } else if (rating === 1.5) { %>
+		<img class="rating" src="assets/15stars.png">
+	<% } else if (rating === 2) { %>
+		<img class="rating" src="assets/2stars.png" >
+	<% } else if (rating === 2.5) { %>
+		<img class="rating" src="assets/25stars.png">
+	<% } else if (rating === 3) { %>
+		<img class="rating" src="assets/3stars.png" >
+	<% } else if (rating === 3.5) { %>
+		<img class="rating" src="assets/35stars.png">
+	<% } else if (rating === 4) { %>
+		<img class="rating" src="assets/4stars.png" >
+	<% } else if (rating === 4.5) { %>
+		<img class="rating" src="assets/44stars.png">
+	<% } else if (rating === 5) { %>
+		<img class="rating" src="assets/5stars.png" >
+	<% } else if (isNaN(rating)) {%>
+		<h1>Be the first to review this restaurant!</h1>
+	<% } %>
+	<br>
+	<br>
 
 <div id="cp_widget_766f1122-0860-460a-8ba3-2903d3835d6e">...</div><script type="text/javascript">
 var cpo = []; cpo["_object"] ="cp_widget_766f1122-0860-460a-8ba3-2903d3835d6e"; cpo["_fid"] = "AIHA79Lzo6Z8";
