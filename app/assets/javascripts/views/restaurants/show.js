@@ -49,7 +49,6 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 	
 	renderRating: function () {
 		var updatedRating = this._calculateRating();
-		debugger;
 		this.ratingView = new NomNom.Views.RatingShow({
 			rating: updatedRating
 		});
