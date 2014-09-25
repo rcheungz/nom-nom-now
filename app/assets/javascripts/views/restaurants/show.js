@@ -34,7 +34,8 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 	
 	renderReviewsForm: function () {
 		var view = new NomNom.Views.ReviewForm({
-			collection: this.collection
+			collection: this.model.reviews(),
+			model: new NomNom.Models.Review()
 		});
 		this.addSubview(".review-form", view);
 	},
