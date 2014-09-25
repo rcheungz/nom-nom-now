@@ -2,11 +2,17 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 	template: JST["restaurants/show"],
 	
 	initialize: function () {
+		this.renderRating();
 		this.listenTo(this.model, "sync", this.render);
-		this.listenTo(this.model, "sync", this.calculateRating);
+		// this.listenTo(this.model, "sync", this.renderRating);
 		this.listenTo(this.model.reviews(), "add", this.addReview);
+		this.listenTo(this.model.reviews(), "add", this.updateRating);
 		this.renderReviews();
 		this.renderReviewsForm();
+	},
+	
+	updateRating: function () {
+		this.ratingView.update(this._calculateRating());
 	},
 	
 	addReview: function (review) {
@@ -16,29 +22,38 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 		this.addSubview(".review-list", reviewView);
 	},
 	
-	roundToHalf: function (num) {
+	_roundToHalf: function (num) {
 	    num = Math.round(num*2)/2;
 	    return num;
 	},
 
-	calculateRating: function () {
+	_calculateRating: function () {
 		var sum = 0;
 		var nums = 0;
 		this.model.reviews().each( function (review) {
 			nums++;
 			sum += review.attributes.rating;
 		});
-		return this.roundToHalf(sum / nums);
+		return this._roundToHalf(sum / nums);
 	},
 	
 	render: function () {
 		var renderedContent = this.template({
 			restaurant: this.model,
-			rating: this.calculateRating()
+			rating: this._calculateRating()
 		});
 		this.$el.html(renderedContent);
 		this.attachSubviews();
 		return this;
+	},
+	
+	renderRating: function () {
+		var updatedRating = this._calculateRating();
+		debugger;
+		this.ratingView = new NomNom.Views.RatingShow({
+			rating: updatedRating
+		});
+		this.addSubview(".restaurant-rating", this.ratingView);
 	},
 	
 	renderReviews: function () {
