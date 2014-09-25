@@ -12,10 +12,27 @@ NomNom.Views.ReviewForm = Backbone.CompositeView.extend({
 		return this;
 	},
 	
+	getRating: function () {
+		if ($("#radio1").checked) {
+			return 1;
+		} else if ($("#radio2").checked) {
+			return 2;
+		} else if ($("#radio3").checked) {
+			return 3;
+		} else if ($("#radio4").checked) {
+			return 4;
+		} else if ($("#radio5").checked) {
+			return 5;
+		}
+	},
+	
 	create: function (event) {
 		event.preventDefault();
+		var rating = this.getRating();
+		debugger;
 		this.collection.create({
 			body: this.$('textarea').val(),
+			rating: rating,
 			restaurant_id: this.collection.restaurant.id
 		}, { wait: true });
 		this.$('textarea').val('');
@@ -26,6 +43,8 @@ NomNom.Views.ReviewForm = Backbone.CompositeView.extend({
 		event.preventDefault();
 		var attrs = this.$el.serializeJSON();
 		attrs.restaurant_id = this.collection.restaurant.id;
+		attrs.rating = this.getRating();
+		debugger;
 		this.collection.create(attrs);
 		// this.model.set(attrs);
 	// 	this.model.set('restaurant_id', this.collection.restaurant.id);
