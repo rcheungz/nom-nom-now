@@ -6,7 +6,7 @@ window.NomNom = {
   Utils: {},
   initialize: function() {
     new NomNom.Routers.Router({
-    	 $rootEl: $(".container")
+    	 $rootEl: $(".wrapper")
     });
     Backbone.history.start();
   }

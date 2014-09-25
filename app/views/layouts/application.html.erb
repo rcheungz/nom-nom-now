@@ -46,16 +46,11 @@
 <% end %>
 
 <div class="container">
-	<div class="logo"></div>
-	<div class="login">
-		<h1>Nom Nom</h1>
-		<% if signed_in? %>
-			<h3>Welcome,  <%= current_user.username %></h3>
-			<%= button_to "Sign Out", session_url, :method => :delete %>
-		<% end %>
-	</div>
-	<%= yield %>
-
+		<div class="logo"></div>
+		<div class="login">
+			<h1>Nom Nom</h1>
+		</div>
+		<%= yield %>
 </div>
 </body>
 </html>

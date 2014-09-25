@@ -16,6 +16,7 @@
 //= require underscore
 //= require backbone
 //= require bootstrap
+//= require backbone.TriggerHappy
 //= require nom_nom
 //= require_tree ../images
 //= require_tree ../templates

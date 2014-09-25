@@ -3,7 +3,6 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 	
 	initialize: function () {
 		this.listenTo(this.model, "sync", this.render);
-		this.listenTo(this.model.reviews(), "sync", this.render); //not sure if this is correct
 		this.listenTo(this.model.reviews(), "add", this.addReview);
 		this.renderReviews();
 		this.renderReviewsForm();
@@ -37,6 +36,7 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 			collection: this.model.reviews(),
 			model: new NomNom.Models.Review()
 		});
+		this.$(".review-form").val("");
 		this.addSubview(".review-form", view);
 	},
 	

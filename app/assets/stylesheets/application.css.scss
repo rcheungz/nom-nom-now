@@ -18,27 +18,16 @@
 @import "bootstrap";
 
 body {
-	position: relative;
 	background-image: url(http://westchestersocialmedia.com/wp-content/uploads/2012/03/Simplicious-Feb-2012-178-proof.jpg);
-	// background-size: 90%;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	z-index: 1;
 }
 
-.container {
-	display: block;
+.wrapper {
 	width: 500px;
-	position: absolute;
-	left: 35%;
-	top: 200px;
-	background: white;
-	
-	opacity: 0.8;
-	// z-index: 2;
-	text-align: center;
+	background: rgba(254, 254, 254, 0.7);
 }
 
 .alert {
@@ -48,19 +37,16 @@ body {
 .signin:hover, .guest:hover {
 	background: #33CC33;
 	color: white;
-	bounce: true;
 }
 
 .rating-radio {
-	background: white;
-	
-	opacity: 0.8;
+	background: rgba(254, 254, 254, 0.2);
 }
 
 
 
 
-// .logo {
+/*// .logo {
 // 	background-image: url(logo.png);
 // 	background-size: contain;
 // 	// z-index: 2;
@@ -69,7 +55,7 @@ body {
 // 	position: absolute;
 // 	left: 50%;
 // }
-//
+//*/
 .css-slideshow {
 position: relative;
 width: 900px;
