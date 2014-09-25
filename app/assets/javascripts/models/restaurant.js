@@ -9,6 +9,14 @@ NomNom.Models.Restaurant = Backbone.Model.extend({
     return this._reviews;
   },
 	
+	categories: function () {
+		if(!this._categories) {
+			this._categories = new NomNom.Collections.Categories([], { restaurant: this });
+		}
+		
+		return this._categories;
+	},
+	
 	parse: function (response) {
 		if(response.reviews) {
       this.reviews().set(response.reviews, { parse: true });

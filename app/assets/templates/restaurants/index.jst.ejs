@@ -2,7 +2,9 @@
 	<h1>Restaurants</h1>
 	<ul>
 		<% restaurants.each(function (restaurant) { %>
-				<li><a href="/#/restaurants/<%= restaurant.id %>"><%= restaurant.escape("name") %></a></li>
+				<li>
+					<a href="/#/restaurants/<%= restaurant.id %>"><%= restaurant.escape("name") %></a>
+				</li>
 		<% }); %>
 	</ul>
 </div>

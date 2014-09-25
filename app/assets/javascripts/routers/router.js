@@ -9,10 +9,11 @@ NomNom.Routers.Router = Backbone.Router.extend({
 		"restaurants/:id": "show"
 	},
 	
-	index: function () {
+	index: function (searchString) {
 		NomNom.Collections.restaurants.fetch();
 		var indexView = new NomNom.Views.RestaurantIndex({
-			collection: NomNom.Collections.restaurants
+			collection: NomNom.Collections.restaurants,
+			keyword: searchString
 		});
 		this._swapView(indexView);
 	},
