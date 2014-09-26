@@ -18,7 +18,7 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 // 		return filteredCollection;
 // 	},
 	
-	render: function () {
+	render: function () { //doesn't retain data after refresh
 		var renderedContent = this.template({
 			restaurants: this.collection
 			//restaurants: this.filterCollection

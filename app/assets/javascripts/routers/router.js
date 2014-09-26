@@ -5,17 +5,35 @@ NomNom.Routers.Router = Backbone.Router.extend({
 	
 	routes: {
 		"": "search",
-		"restaurants": "index",
+		"restaurants": "searchResults",
 		"restaurants/:id": "show"
 	},
 	
-	index: function (searchString) {
-		NomNom.Collections.restaurants.fetch();
-		var indexView = new NomNom.Views.RestaurantIndex({
-			collection: NomNom.Collections.restaurants,
-			keyword: searchString
+	// searchResults: function (searchString) {
+		// NomNom.Collections.restaurants.fetch();
+	// 	debugger;
+	// 	var indexView = new NomNom.Views.RestaurantIndex({
+	// 		collection: NomNom.Collections.categories,
+	// 		keyword: searchString
+	// 	});
+	// 	this._swapView(indexView);
+	// },
+	
+	searchResults: function () {
+		var url = decodeURI(window.location.hash);
+		var queryIndex = url.indexOf("query=");
+		var searchString = url.slice(queryIndex + 6);
+		debugger;
+		var that = this;
+		NomNom.Collections.categories.fetch({
+			data: $.param({ query: searchString }),
+			success: function () {
+				var indexView = new NomNom.Views.RestaurantIndex({
+					collection: NomNom.Collections.categories
+				});
+				that._swapView(indexView);
+			}
 		});
-		this._swapView(indexView);
 	},
 	
 	show: function (id) {

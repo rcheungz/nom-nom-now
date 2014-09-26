@@ -18,7 +18,7 @@
 @import "bootstrap";
 
 body {
-	background-image: url(http://westchestersocialmedia.com/wp-content/uploads/2012/03/Simplicious-Feb-2012-178-proof.jpg);
+	background-image: url("vietnam.jpg");
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -51,6 +51,12 @@ body {
 .image-circle {
 	height: 50px;
 	width: 50px;
+}
+
+#map-canvas {
+	width: 40%;
+	height: 80%;
+	margin: 0px;
 }
 
 

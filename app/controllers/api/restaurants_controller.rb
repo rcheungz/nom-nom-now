@@ -11,6 +11,14 @@ class Api::RestaurantsController < ApplicationController
     render :show
   end
   
+  def search
+    
+  end
+  
+  def restaurants_by_category
+    
+  end
+  
   private
   
   def restaurant_params
