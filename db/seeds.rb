@@ -89,7 +89,6 @@ RestaurantCategory.create(restaurant_id: 9, category_id: 18) #Kokkari Estiatorio
 RestaurantCategory.create(restaurant_id: 10, category_id: 19) #Hog Island Oyster Co - Seafood
 RestaurantCategory.create(restaurant_id: 11, category_id: 19) #Saigon Sandwich - Sandwich
 RestaurantCategory.create(restaurant_id: 11, category_id: 19) #Saigon Sandwich - Vietnamese
-
 RestaurantCategory.create(restaurant_id: 12, category_id: 22) #Little Star Pizza - Italian
 RestaurantCategory.create(restaurant_id: 12, category_id: 23) #Little Star Pizza - Pizza
 RestaurantCategory.create(restaurant_id: 13, category_id: 22) #Tony's Pizza Napoletana - Italian
@@ -98,7 +97,6 @@ RestaurantCategory.create(restaurant_id: 14, category_id: 24) #The Monk's Kettle
 RestaurantCategory.create(restaurant_id: 14, category_id: 25) #The Monk's Kettle - Gastropubs
 RestaurantCategory.create(restaurant_id: 15, category_id: 26) #Umami Burger - Burgers
 RestaurantCategory.create(restaurant_id: 16, category_id: 19) #Swan Oyster Depot - Seafood
-
 RestaurantCategory.create(restaurant_id: 17, category_id: 14) #Taqueria Cancun - Mexican
 RestaurantCategory.create(restaurant_id: 17, category_id: 15) #Taqueria Cancun - Tacos
 RestaurantCategory.create(restaurant_id: 17, category_id: 16) #Taqueria Cancun - Burritos

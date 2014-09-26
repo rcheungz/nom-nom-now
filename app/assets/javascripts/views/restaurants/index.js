@@ -10,6 +10,7 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 	initialize: function (options) {
 		this.searchString = options.keyword;
 		this.listenTo(this.collection, "sync", this.render);
+		this.markers = [];
 	},
 	
 	render: function () { //doesn't retain data after refresh
@@ -21,8 +22,40 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 		this.$el.html(renderedContent);
 		// this.initializeMap();//important this must stay here so that after the page renders then the map pops up so it isn't removed.
 		this.initializeMap();
+		this.gatherMarkers();
 		return this;
 	},
+	
+	gatherMarkers: function () {
+		var that = this
+		this.collection.each(function(restaurant) {
+			debugger;
+			var address = restaurant.escape("address");
+		  that.geocoder.geocode( { 'address': address}, function(results, status) {
+		    if (status == google.maps.GeocoderStatus.OK) {
+		      var marker = new google.maps.Marker({
+		          map: that.map,
+							animation: google.maps.Animation.DROP,
+		          position: results[0].geometry.location
+		      });
+		    } else {
+					console.log('Geocode was not successful for the following reason: ' + status);
+		    }
+			});
+	  });
+	},
+	
+	// dropMarkers: function () {
+	//
+	// },
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	initializeMap: function () {
 		this.geocoder = new google.maps.Geocoder();
@@ -98,6 +131,15 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 				alert('Geocode was not successful for the following reason: ' + status);
 	    }
 	  });
+	},
+	
+	toggleBounce: function (marker) {
+
+	  if (marker.getAnimation() != null) {
+	    marker.setAnimation(null);
+	  } else {
+	    marker.setAnimation(google.maps.Animation.BOUNCE);
+	  }
 	},
 	
 	// onRender: function () {
