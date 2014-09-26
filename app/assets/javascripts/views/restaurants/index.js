@@ -8,23 +8,28 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 		this.listenTo(this.collection, "sync", this.render);
 	},
 	
-	// filterCollection: function () {
-// 		var filteredCollection = new NomNom.Collections.Restaurants();
-// 		this.collection.each(function(restaurant) {
-// 			if (restaurant.categories().where({ category: this.searchString })) { //not sure if this is valid?
-// 				filteredCollection.add(restaurant);//also not sure if this is cool, should I create a copy of restaurant and add it? does this take restaurant out of the original collection and add it to filtered?
-// 			}
-// 		});
-// 		return filteredCollection;
-// 	},
-	
 	render: function () { //doesn't retain data after refresh
 		var renderedContent = this.template({
 			restaurants: this.collection
 			//restaurants: this.filterCollection
 		});
 		this.$el.html(renderedContent);
+		this.initializeMap();
 		return this;
 	},
-});
+	
+	initializeMap: function () {
+		var mapOptions = {
+      center: { lat: 37.751994, lng: -122.443341},
+      zoom: 13
+    };
 
+	  var map = new google.maps.Map(this.$('#map-canvas')[0],
+	      mapOptions);
+	},
+	
+	// onRender: function () {
+	// 	this.initializeMap();
+	// },
+	
+});

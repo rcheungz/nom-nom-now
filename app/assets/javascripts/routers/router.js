@@ -9,21 +9,10 @@ NomNom.Routers.Router = Backbone.Router.extend({
 		"restaurants/:id": "show"
 	},
 	
-	// searchResults: function (searchString) {
-		// NomNom.Collections.restaurants.fetch();
-	// 	debugger;
-	// 	var indexView = new NomNom.Views.RestaurantIndex({
-	// 		collection: NomNom.Collections.categories,
-	// 		keyword: searchString
-	// 	});
-	// 	this._swapView(indexView);
-	// },
-	
 	searchResults: function () {
 		var url = decodeURI(window.location.hash);
 		var queryIndex = url.indexOf("query=");
 		var searchString = url.slice(queryIndex + 6);
-		debugger;
 		var that = this;
 		NomNom.Collections.categories.fetch({
 			data: $.param({ query: searchString }),
@@ -54,6 +43,7 @@ NomNom.Routers.Router = Backbone.Router.extend({
 		this._currentView && this._currentView.remove();
 		this._currentView = view;
 		this.$rootEl.html(view.render().$el);
+		view.onRender && view.onRender();
 	},
 	
 	
