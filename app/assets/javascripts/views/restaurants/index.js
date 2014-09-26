@@ -20,7 +20,7 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 		});
 		this.$el.html(renderedContent);
 		// this.initializeMap();//important this must stay here so that after the page renders then the map pops up so it isn't removed.
-		this.currentLocation();
+		this.initializeMap();
 		return this;
 	},
 	
@@ -35,7 +35,7 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 	      mapOptions);
 	},
 	
-	currentLocation: function () {
+	currentLocation: function () { //traces user's current position and brings it up on map
 	  var mapOptions = {
 	    zoom: 6
 	  };
@@ -54,7 +54,8 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 	        position: pos,
 	        content: 'Location found using HTML5.'
 	      });
-	      that.map.setCenter(pos);
+	      that.map.setCenter(pos)
+				that.map.setZoom(15);
 	    }, function() {
 	      handleNoGeolocation(true);
 	    });
@@ -81,16 +82,13 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 	  this.map.setCenter(options.position);
 	},
 	
-	codeAddress: function () {
+	codeAddress: function () { //used to find coordinates of given address
 	  var address = document.getElementById('address').value;
-		debugger;
 		var that = this;
 	  this.geocoder.geocode( { 'address': address}, function(results, status) {
 			console.log("entered geocoder loop");
-			debugger;
 	    if (status == google.maps.GeocoderStatus.OK) {
 				console.log("entered status loop");
-				debugger;
 	      that.map.setCenter(results[0].geometry.location);
 	      var marker = new google.maps.Marker({
 	          map: that.map,
