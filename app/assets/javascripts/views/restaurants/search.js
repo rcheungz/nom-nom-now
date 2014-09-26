@@ -5,5 +5,9 @@ NomNom.Views.RestaurantSearch = Backbone.View.extend({
 		"click .search": "submitSearch"
 	},
 	
+	submitSearch: function (event) {
+		event.preventDefault
+	}
+	
 	
 });

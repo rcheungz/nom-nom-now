@@ -4,8 +4,8 @@ NomNom.Routers.Router = Backbone.Router.extend({
 	},
 	
 	routes: {
-		"": "index",
-		"restaurants": "search",
+		"": "search",
+		"restaurants": "index",
 		"restaurants/:id": "show"
 	},
 	
@@ -28,7 +28,8 @@ NomNom.Routers.Router = Backbone.Router.extend({
 	},
 	
 	search: function () {
-		
+		var searchView = new NomNom.Views.RestaurantSearch();
+		this._swapView(searchView);
 	},
 	
 	_swapView: function(view) {
