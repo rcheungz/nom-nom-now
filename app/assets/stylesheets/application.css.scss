@@ -18,16 +18,27 @@
 @import "bootstrap";
 
 body {
-	background-image: url("vietnam.jpg");
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
+	background-image: url("view.jpg");
 	background-size: cover;
 }
 
+.container {
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+}
+
 .wrapper {
-	width: 500px;
+	width: 60%;
+}
+
+.search-results {
 	background: rgba(254, 254, 254, 0.7);
+}
+
+.restaurant-show {
+	background: rgba(254, 254, 254, 0.7);
+	
 }
 
 .alert {

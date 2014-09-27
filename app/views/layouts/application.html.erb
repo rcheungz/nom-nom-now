@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	
 <nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -41,40 +42,13 @@
 	      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpZfxPwha3LJq-L6QQzQbIMw3bLbwAwnw">
 	    </script>
 
-
-
-<!-- <head>
-    <style type="text/css">
-      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
-    </style>
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpZfxPwha3LJq-L6QQzQbIMw3bLbwAwnw">
-    </script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: { lat: 37.751994, lng: -122.443341},
-          zoom: 13
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-  </head>
-  <body>
-<div id="map-canvas"></div>
-  </body> -->
-
-
-
 <% if flash[:errors] %>
 <div class="alert alert-danger col-md-4 col-md-offset-4" role="alert">
 	<%= flash[:errors] %>
 </div>
 <% end %>
 
-<div class="container">
+<div class="container-fluid">
 		<div class="logo"></div>
 		<div class="login">
 		</div>
@@ -83,35 +57,3 @@
 </body>
 </html>
 
-
-
-
-	<!-- <div class="slideshow">
-		<div class="css-slideshow">
-			<figure>
-				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-css3.jpg" alt="class-header-css3" class="alignnone size-full wp-image-172" />
-			</figure>
-			<figure>
-				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-semantics.jpg" alt="class-header-semantics" class="alignnone size-full wp-image-179" />
-			</figure>
-			<figure>
-				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-offline.jpg" alt="class-header-offline" class="alignnone size-large wp-image-178" />
-			</figure>
-			<figure>
-				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-device.jpg" alt="class-header-device" class="alignnone size-full wp-image-177" />
-			</figure>
-			<figure>
-				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-connectivity.jpg" alt="class-header-connectivity" class="alignnone size-large wp-image-176" />
-			</figure>
-			<figure>
-				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-multimedia.jpg" alt="class-header-multimedia" class="alignnone size-large wp-image-175" />
-			</figure>
-			<figure>
-				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-3d.jpg" alt="class-header-3d" class="alignnone size-large wp-image-174" />
-			</figure>
-			<figure>
-				<img src="http://themarklee.com/wp-content/uploads/2013/10/class-header-performance.jpg" alt="class-header-performance" class="alignnone size-large wp-image-173" />
-			</figure>
-		  </div>
-		<p class="css-slideshow-attr"><a href="http://www.w3.org/html/logo/" target="_top">Images and captions are from the W3C</a></p>
-	</div> -->
