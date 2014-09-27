@@ -6,7 +6,7 @@
 			<ul>
 				<% restaurants.each(function (restaurant) { %>
 						<li>
-							<a href="/#/restaurants/<%= restaurant.id %>"><%= restaurant.escape("name") %></a>
+							<a href="/#/restaurants/<%= restaurant.id %>" data-id="<%= restaurant.id %>"><%= restaurant.escape("name") %></a>
 						</li>
 				<% }); %>
 			</ul>

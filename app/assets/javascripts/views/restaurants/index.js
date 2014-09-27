@@ -4,7 +4,9 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 	className: "restaurants-index",
 	
 	events: {
-		"click .geocode": "codeAddress"
+		"click .geocode": "codeAddress",
+		"mouseover a": "hoverThing",
+		"mouseout a": "hoverOff"
 	},
 	
 	initialize: function (options) {
@@ -22,27 +24,46 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 		this.$el.html(renderedContent);
 		// this.initializeMap();//important this must stay here so that after the page renders then the map pops up so it isn't removed.
 		this.initializeMap();
-		this.gatherMarkers();
+		this.dropMarkers();
 		return this;
 	},
 	
-	gatherMarkers: function () {
-		var that = this
+	hoverThing: function(event) {
+		console.log("hovering over: "+ event.currentTarget);
+		console.log(this.collection.get($(event.currentTarget).data('id')).marker);
+		window.marker = this.collection.get($(event.currentTarget).data('id')).marker;
+		debugger;
+		this.collection.get($(event.currentTarget).data('id')).marker.icon.strokeColor = "blue";
+	},
+	
+	hoverOff: function(event) {
+		console.log("leaving: " + event.currentTarget);
+		this.collection.get($(event.currentTarget).data('id')).marker.icon[strokeColor] = "red";
+	},
+	
+	dropMarkers: function () {
+		var that = this;
+		var markers = [];
+		var marker = 0;
 		this.collection.each(function(restaurant) {
-			debugger;
 			var address = restaurant.escape("address");
 		  that.geocoder.geocode( { 'address': address}, function(results, status) {
 		    if (status == google.maps.GeocoderStatus.OK) {
-		      var marker = new google.maps.Marker({
+		      restaurant.marker = new google.maps.Marker({
 		          map: that.map,
 							animation: google.maps.Animation.DROP,
 		          position: results[0].geometry.location
 		      });
+					
+					// markers.push(marker);
+			// 		debugger;
+					google.maps.event.addListener(restaurant.marker, 'click', that.toggleBounce.bind(that, marker));
 		    } else {
 					console.log('Geocode was not successful for the following reason: ' + status);
 		    }
 			});
 	  });
+		// debugger;
 	},
 	
 	// dropMarkers: function () {

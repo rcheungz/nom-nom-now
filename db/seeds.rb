@@ -33,37 +33,37 @@ Restaurant.create(name: "Sushirrito", address: "59 New Montgomery St San Francis
 Restaurant.create(name: "Kare-Ken", address: "552 Jones St San Francisco, CA 94102") #Japanese Curry ________________________________________________________ 20                                                   
 
 #Categories
-Category.create(name: "Sandwiches")         #1
-Category.create(name: "Cajun")              #2
-Category.create(name: "French")             #3
-Category.create(name: "Soul Food")          #4
-Category.create(name: "Burmese")            #5  
-Category.create(name: "Chinese")            #6
-Category.create(name: "American")           #7
-Category.create(name: "Modern")             #8
-Category.create(name: "European")           #9
-Category.create(name: "Breakfast")          #10
-Category.create(name: "Brunch")             #11
-Category.create(name: "Breakfast & Brunch") #12
-Category.create(name: "Asian Fusion")       #13
-Category.create(name: "Mexican")            #14
-Category.create(name: "Tacos")              #15 
-Category.create(name: "Burritos")           #16
-Category.create(name: "Greek")              #17
-Category.create(name: "Mediterranean")      #18
-Category.create(name: "Seafood")            #19
-Category.create(name: "Vietnamese")         #21
-Category.create(name: "Italian")            #22
-Category.create(name: "Pizza")              #23
-Category.create(name: "Bars")               #24
-Category.create(name: "Gastropubs")         #25
-Category.create(name: "Burgers")            #26
-Category.create(name: "Japanese")           #27
-Category.create(name: "Sushi")              #28
-Category.create(name: "Curry")              #29
-Category.create(name: "Korean")             #30
-Category.create(name: "French")             #31
-Category.create(name: "Indian")             #32
+Category.create(name: "sandwiches")         #1
+Category.create(name: "cajun")              #2
+Category.create(name: "french")             #3
+Category.create(name: "soul food")          #4
+Category.create(name: "urmese")            #5  
+Category.create(name: "chinese")            #6
+Category.create(name: "american")           #7
+Category.create(name: "modern")             #8
+Category.create(name: "european")           #9
+Category.create(name: "breakfast")          #10
+Category.create(name: "brunch")             #11
+Category.create(name: "breakfast & brunch") #12
+Category.create(name: "asian fusion")       #13
+Category.create(name: "mexican")            #14
+Category.create(name: "tacos")              #15 
+Category.create(name: "burritos")           #16
+Category.create(name: "greek")              #17
+Category.create(name: "mediterranean")      #18
+Category.create(name: "seafood")            #19
+Category.create(name: "vietnamese")         #20
+Category.create(name: "italian")            #21
+Category.create(name: "pizza")              #22
+Category.create(name: "bars")               #23
+Category.create(name: "gastropubs")         #24
+Category.create(name: "burgers")            #25
+Category.create(name: "japanese")           #26
+Category.create(name: "sushi")              #27
+Category.create(name: "curry")              #28
+Category.create(name: "korean")             #29
+Category.create(name: "french")             #30
+Category.create(name: "indian")             #31
 
 #Restaurant Categories (Join Table)
 
@@ -87,23 +87,23 @@ RestaurantCategory.create(restaurant_id: 8, category_id: 16) #El Farolito - Burr
 RestaurantCategory.create(restaurant_id: 9, category_id: 17) #Kokkari Estiatorio - Greek
 RestaurantCategory.create(restaurant_id: 9, category_id: 18) #Kokkari Estiatorio - Mediterranean
 RestaurantCategory.create(restaurant_id: 10, category_id: 19) #Hog Island Oyster Co - Seafood
-RestaurantCategory.create(restaurant_id: 11, category_id: 19) #Saigon Sandwich - Sandwich
-RestaurantCategory.create(restaurant_id: 11, category_id: 19) #Saigon Sandwich - Vietnamese
-RestaurantCategory.create(restaurant_id: 12, category_id: 22) #Little Star Pizza - Italian
-RestaurantCategory.create(restaurant_id: 12, category_id: 23) #Little Star Pizza - Pizza
-RestaurantCategory.create(restaurant_id: 13, category_id: 22) #Tony's Pizza Napoletana - Italian
-RestaurantCategory.create(restaurant_id: 13, category_id: 23) #Tony's Pizza Napoletana - Pizza
+RestaurantCategory.create(restaurant_id: 11, category_id: 1) #Saigon Sandwich - Sandwich
+RestaurantCategory.create(restaurant_id: 11, category_id: 20) #Saigon Sandwich - Vietnamese
+RestaurantCategory.create(restaurant_id: 12, category_id: 21) #Little Star Pizza - Italian
+RestaurantCategory.create(restaurant_id: 12, category_id: 22) #Little Star Pizza - Pizza
+RestaurantCategory.create(restaurant_id: 13, category_id: 21) #Tony's Pizza Napoletana - Italian
+RestaurantCategory.create(restaurant_id: 13, category_id: 22) #Tony's Pizza Napoletana - Pizza
 RestaurantCategory.create(restaurant_id: 14, category_id: 24) #The Monk's Kettle - Bar
 RestaurantCategory.create(restaurant_id: 14, category_id: 25) #The Monk's Kettle - Gastropubs
-RestaurantCategory.create(restaurant_id: 15, category_id: 26) #Umami Burger - Burgers
+RestaurantCategory.create(restaurant_id: 15, category_id: 25) #Umami Burger - Burgers
 RestaurantCategory.create(restaurant_id: 16, category_id: 19) #Swan Oyster Depot - Seafood
 RestaurantCategory.create(restaurant_id: 17, category_id: 14) #Taqueria Cancun - Mexican
 RestaurantCategory.create(restaurant_id: 17, category_id: 15) #Taqueria Cancun - Tacos
 RestaurantCategory.create(restaurant_id: 17, category_id: 16) #Taqueria Cancun - Burritos
-RestaurantCategory.create(restaurant_id: 18, category_id: 22) #Sotto Mare - Italian
+RestaurantCategory.create(restaurant_id: 18, category_id: 21) #Sotto Mare - Italian
 RestaurantCategory.create(restaurant_id: 18, category_id: 19) #Sotto Mare - Seafood
-RestaurantCategory.create(restaurant_id: 19, category_id: 28) #Sushirrito - Sushi
-RestaurantCategory.create(restaurant_id: 19, category_id: 27) #Sushirrito - Japanese
+RestaurantCategory.create(restaurant_id: 19, category_id: 27) #Sushirrito - Sushi
+RestaurantCategory.create(restaurant_id: 19, category_id: 26) #Sushirrito - Japanese
 RestaurantCategory.create(restaurant_id: 19, category_id: 16) #Sushirrito - Burritos
-RestaurantCategory.create(restaurant_id: 20, category_id: 27) #Kare-Ken - Japanese
+RestaurantCategory.create(restaurant_id: 20, category_id: 26) #Kare-Ken - Japanese
 RestaurantCategory.create(restaurant_id: 20, category_id: 29) #Kare-Ken - Curry

@@ -3,7 +3,8 @@ class Api::CategoriesController < ApplicationController
   def index
     @categories = Category.all
     if params[:query]
-      @category = Category.find_by(name: params[:query])
+      searchString = params[:query].downcase
+      @category = Category.find_by(name: searchString)
       render :shawna
     end
   end
