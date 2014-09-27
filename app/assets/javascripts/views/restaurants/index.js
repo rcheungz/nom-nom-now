@@ -32,7 +32,6 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 		console.log("hovering over: "+ event.currentTarget);
 		console.log(this.collection.get($(event.currentTarget).data('id')).marker);
 		window.marker = this.collection.get($(event.currentTarget).data('id')).marker;
-		debugger;
 		this.collection.get($(event.currentTarget).data('id')).marker.icon.strokeColor = "blue";
 	},
 	
