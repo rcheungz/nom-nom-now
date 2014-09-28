@@ -12,10 +12,9 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 	initialize: function (options) {
 		this.searchString = options.keyword;
 		this.listenTo(this.collection, "sync", this.render);
-		this.markers = [];
 	},
 	
-	render: function () { //doesn't retain data after refresh
+	render: function () { 
 		var renderedContent = this.template({
 			restaurants: this.collection,
 			// function: this.codeAddress
@@ -54,21 +53,13 @@ NomNom.Views.RestaurantIndex = Backbone.View.extend({
 		          position: results[0].geometry.location
 		      });
 					
-					// markers.push(marker);
-			// 		debugger;
 					google.maps.event.addListener(restaurant.marker, 'click', that.toggleBounce.bind(that, marker));
 		    } else {
 					console.log('Geocode was not successful for the following reason: ' + status);
 		    }
 			});
 	  });
-		// debugger;
 	},
-	
-	// dropMarkers: function () {
-	//
-	// },
-	
 	
 	
 	

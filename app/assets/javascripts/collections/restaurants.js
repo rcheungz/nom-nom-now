@@ -7,6 +7,7 @@ NomNom.Collections.Restaurants = Backbone.Collection.extend({
 		var restaurants = this;
 		
 		if (!restaurant) {
+			debugger;
 			restaurant = new NomNom.Models.Restaurant({ id: id })
 			restaurant.fetch({
 				success: function () {

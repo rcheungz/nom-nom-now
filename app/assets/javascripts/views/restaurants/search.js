@@ -8,7 +8,6 @@ NomNom.Views.RestaurantSearch = Backbone.View.extend({
 	submitSearch: function (event) {
 		event.preventDefault();
 		var searchString = $(".search-string").val();
-		
 		NomNom.Collections.categories.fetch({ data: $.param({ query: searchString }) }); //fetches the restaurants that apply to this category
 		var url = "restaurants?query=" + encodeURI(searchString);
 		Backbone.history.navigate(url, { trigger: true });
@@ -16,6 +15,7 @@ NomNom.Views.RestaurantSearch = Backbone.View.extend({
 	
 	
 	render: function (){
+		debugger;
 		var renderedContent = this.template();
 		this.$el.html(renderedContent);
 		return this;

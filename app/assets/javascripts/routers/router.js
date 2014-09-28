@@ -35,7 +35,9 @@ NomNom.Routers.Router = Backbone.Router.extend({
 	},
 	
 	search: function () {
-		var searchView = new NomNom.Views.RestaurantSearch();
+		var searchView = new NomNom.Views.RestaurantSearch({
+			collection: NomNom.Collections.restaurants
+		});
 		this._swapView(searchView);
 	},
 	
