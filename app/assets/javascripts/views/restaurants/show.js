@@ -3,6 +3,7 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 	
 	initialize: function () {
 		this.renderRating();
+		
 		this.listenTo(this.model, "sync", this.render);
 		// this.listenTo(this.model, "sync", this.renderRating);
 		this.listenTo(this.model.reviews(), "add", this.addReview);
@@ -172,13 +173,13 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 	renderRating: function () {
 		var updatedRating = this._calculateRating();
 		this.ratingView = new NomNom.Views.RatingShow({
-			rating: updatedRating
+			rating: updatedRating,
 		});
 		this.addSubview(".restaurant-rating", this.ratingView);
 	},
 	
 	renderReviews: function () {
-		var that = this
+		var that = this;
 		this.model.reviews().each(function (review) {
 			that.addReview(review);
 		});

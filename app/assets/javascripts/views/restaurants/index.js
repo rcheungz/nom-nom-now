@@ -17,7 +17,7 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	
 	render: function () { 
 		var renderedContent = this.template({
-			restaurants: this.collection,
+			restaurants: this.collection.first().restaurants(),//problem?
 		});
 		this.$el.html(renderedContent);
 		// this.initializeMap();//important this must stay here so that after the page renders then the map pops up so it isn't removed.
@@ -28,8 +28,10 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	},
 	
 	addListing: function (listing) {
+		var rating = this._calculateRating(listing);
 		var listingShow = new NomNom.Views.ListingShow({
-			model: listing
+			model: listing,
+			rating: rating
 		});
 		this.addSubview(".restaurants", listingShow);
 	},
@@ -40,6 +42,22 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 		restaurants.each(function (listing) {
 			that.addListing(listing);
 		});
+	},
+	
+	_roundToHalf: function (num) {
+	    num = Math.round(num*2)/2;
+	    return num;
+	},
+
+	_calculateRating: function (restaurant) {
+		var sum = 0;
+		var nums = 0;
+		restaurant.reviews().each( function (review) {
+			nums++;
+			sum += review.attributes.rating;
+		});
+		// this.rating = this._roundToHalf(sum / nums);//allows outside to access rating
+		return this._roundToHalf(sum / nums);
 	},
 	
 	initializeMap: function () {

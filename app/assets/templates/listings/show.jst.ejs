@@ -1,3 +1,4 @@
+<a href="/#/restaurants/<%= restaurant.id %>" data-id="<%= restaurant.id %>">
 <div class="row carousel-row">
   <div class="col-xs-8 col-xs-offset-2 slide-row">
       <div id="carousel-1" class="carousel slide slide-carousel" data-ride="carousel">
@@ -21,12 +22,34 @@
           </div>
         </div>
       </div>
+			<a href="/#/restaurants/<%= restaurant.id %>" data-id="<%= restaurant.id %>">
       <div class="slide-content">
-          <a href="/#/restaurants/<%= restaurant.id %>" data-id="<%= restaurant.id %>"><h3><%= restaurant.escape("name") %></h3><br><h5><%= restaurant.escape("address") %></h5></a>
-          <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
-              sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat
-          </p>
+          <a href="/#/restaurants/<%= restaurant.id %>" data-id="<%= restaurant.id %>">
+             <h3><%= restaurant.escape("name") %></h3>
+						 <br>
+						 <h5><%= restaurant.escape("address") %></h5>
+						 <% if (rating === 1) { %>
+						 	<img class="rating" src="assets/1star.png">  
+						 <% } else if (rating === 1.5) { %>
+						 	<img class="rating" src="assets/15stars.png">
+						 <% } else if (rating === 2) { %>
+						 	<img class="rating" src="assets/2stars.png" >
+						 <% } else if (rating === 2.5) { %>
+						 	<img class="rating" src="assets/25stars.png">
+						 <% } else if (rating === 3) { %>
+						 	<img class="rating" src="assets/3stars.png" >
+						 <% } else if (rating === 3.5) { %>
+						 	<img class="rating" src="assets/35stars.png">
+						 <% } else if (rating === 4) { %>
+						 	<img class="rating" src="assets/4stars.png" >
+						 <% } else if (rating === 4.5) { %>
+						 	<img class="rating" src="assets/45stars.png">
+						 <% } else if (rating === 5) { %>
+						 	<img class="rating" src="assets/5stars.png" >
+						 <% } else if (isNaN(rating)) {%>
+						 	<h1>Be the first to review this restaurant!</h1>
+						 <% } %>			 
       </div>
   </div>
 </div>
+</a>
