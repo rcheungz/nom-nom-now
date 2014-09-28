@@ -15,7 +15,6 @@ NomNom.Views.RestaurantSearch = Backbone.View.extend({
 	
 	
 	render: function (){
-		debugger;
 		var renderedContent = this.template();
 		this.$el.html(renderedContent);
 		return this;

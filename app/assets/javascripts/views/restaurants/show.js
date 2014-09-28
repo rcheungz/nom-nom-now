@@ -34,6 +34,7 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 			nums++;
 			sum += review.attributes.rating;
 		});
+		this.rating = this._roundToHalf(sum / nums);//allows outside to access rating
 		return this._roundToHalf(sum / nums);
 	},
 	
