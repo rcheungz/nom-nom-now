@@ -26,29 +26,30 @@
       <div class="slide-content">
           <a href="/#/restaurants/<%= restaurant.id %>" data-id="<%= restaurant.id %>">
              <h3><%= restaurant.escape("name") %></h3>
-						 <br>
-						 <h5><%= restaurant.escape("address") %></h5>
 						 <% if (rating === 1) { %>
-						 	<img class="rating" src="assets/1star.png">  
+						 	<img class="listingrating" src="assets/1star.png">  
 						 <% } else if (rating === 1.5) { %>
-						 	<img class="rating" src="assets/15stars.png">
+						 	<img class="listingrating" src="assets/15stars.png">
 						 <% } else if (rating === 2) { %>
-						 	<img class="rating" src="assets/2stars.png" >
+						 	<img class="listingrating" src="assets/2stars.png" >
 						 <% } else if (rating === 2.5) { %>
-						 	<img class="rating" src="assets/25stars.png">
+						 	<img class="listingrating" src="assets/25stars.png">
 						 <% } else if (rating === 3) { %>
-						 	<img class="rating" src="assets/3stars.png" >
+						 	<img class="listingrating" src="assets/3stars.png" >
 						 <% } else if (rating === 3.5) { %>
-						 	<img class="rating" src="assets/35stars.png">
+						 	<img class="listingrating" src="assets/35stars.png">
 						 <% } else if (rating === 4) { %>
-						 	<img class="rating" src="assets/4stars.png" >
+						 	<img class="listingrating" src="assets/4stars.png" >
 						 <% } else if (rating === 4.5) { %>
-						 	<img class="rating" src="assets/45stars.png">
+						 	<img class="listingrating" src="assets/45stars.png">
 						 <% } else if (rating === 5) { %>
-						 	<img class="rating" src="assets/5stars.png" >
+						 	<img class="listingrating" src="assets/5stars.png" >
 						 <% } else if (isNaN(rating)) {%>
-						 	<h1>Be the first to review this restaurant!</h1>
-						 <% } %>			 
+						 	<h4>Be the first to review this restaurant!</h4>
+						 <% } %>
+						 
+						 <h5><%= restaurant.escape("address") %></h5>
+						 
       </div>
   </div>
 </div>

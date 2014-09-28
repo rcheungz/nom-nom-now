@@ -64,6 +64,7 @@ Category.create(name: "curry")              #28
 Category.create(name: "korean")             #29
 Category.create(name: "french")             #30
 Category.create(name: "indian")             #31
+Category.create(name: "restaurants")        #32
 
 #Restaurant Categories (Join Table)
 
@@ -107,3 +108,26 @@ RestaurantCategory.create(restaurant_id: 19, category_id: 26) #Sushirrito - Japa
 RestaurantCategory.create(restaurant_id: 19, category_id: 16) #Sushirrito - Burritos
 RestaurantCategory.create(restaurant_id: 20, category_id: 26) #Kare-Ken - Japanese
 RestaurantCategory.create(restaurant_id: 20, category_id: 29) #Kare-Ken - Curry
+
+#All Restaurants fall under restaurant category
+
+RestaurantCategory.create(restaurant_id: 1, category_id: 32) #Ike's Place - Sandwiches
+RestaurantCategory.create(restaurant_id: 2, category_id: 32) #Brenda's French Soul Food - Cajun
+RestaurantCategory.create(restaurant_id: 3, category_id: 32) #Brenda's French Soul Food - French
+RestaurantCategory.create(restaurant_id: 4, category_id: 32) #Brenda's French Soul Food - Soul Food
+RestaurantCategory.create(restaurant_id: 5, category_id: 32) #Burmese Superstar - Burmese
+RestaurantCategory.create(restaurant_id: 6, category_id: 32) #San Tung Chinese Restaurant - Chinese
+RestaurantCategory.create(restaurant_id: 7, category_id: 32) #Gary Danko - American
+RestaurantCategory.create(restaurant_id: 8, category_id: 32) #NOPA - American Modern European Breakfast Brunch Breakfast & Brunch 
+RestaurantCategory.create(restaurant_id: 9, category_id: 32) #NOPA - Modern
+RestaurantCategory.create(restaurant_id: 10, category_id: 32) #NOPA - European
+RestaurantCategory.create(restaurant_id: 11, category_id: 32) #NOPA - Breakfast
+RestaurantCategory.create(restaurant_id: 12, category_id: 32) #NOPA - Brunch
+RestaurantCategory.create(restaurant_id: 13, category_id: 32) #NOPA - Breakfast & Brunch
+RestaurantCategory.create(restaurant_id: 14, category_id: 32) #The House - Asian Fusion
+RestaurantCategory.create(restaurant_id: 15, category_id: 32) #El Farolito - Mexican
+RestaurantCategory.create(restaurant_id: 16, category_id: 32) #El Farolito - Tacos
+RestaurantCategory.create(restaurant_id: 17, category_id: 32) #El Farolito - Burritos
+RestaurantCategory.create(restaurant_id: 18, category_id: 32) #Kokkari Estiatorio - Greek
+RestaurantCategory.create(restaurant_id: 19, category_id: 32) #Kokkari Estiatorio - Mediterranean
+RestaurantCategory.create(restaurant_id: 20, category_id: 32) #Hog Island Oyster Co - Seafood
