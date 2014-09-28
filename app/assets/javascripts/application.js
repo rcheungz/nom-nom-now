@@ -18,6 +18,8 @@
 //= require bootstrap
 //= require backbone.TriggerHappy
 //= require nom_nom
+//= require reviewform
+//= require stars
 //= require_tree ../images
 //= require_tree ../templates
 //= require_tree ./models

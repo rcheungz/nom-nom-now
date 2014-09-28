@@ -4,7 +4,7 @@ NomNom.Views.ListingShow = Backbone.View.extend({
 	
 	render: function () {
 		var renderedContent = this.template({
-			listing: this.model
+			restaurant: this.model
 		});
 		this.$el.html(renderedContent);
 		return this;

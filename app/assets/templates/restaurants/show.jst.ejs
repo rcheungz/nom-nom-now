@@ -1,39 +1,56 @@
 <div class="restaurant-show">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-2">
+			<h1><%= restaurant.escape("name") %></h1>
+			<h3><%= restaurant.escape("address") %></h3>
 	
-	<h1><%= restaurant.escape("name") %></h1>
-	<h3><%= restaurant.escape("address") %></h3>
+			<div class="restaurant-rating"></div>
+			<br>
+			<br>
+
+			<div class="reviews">
+				<ul class="review-list">
+				</ul>
+			</div>
+			<div class="review-form">
+			</div>
+		</div>
 	
-	<div class="restaurant-rating">
+	
+	<div class="col-md-4">
+		<div id="map-canvas"></div>
+	</div>
+  <div class="text-right">
+	
 		
-	</div>
-	<br>
-	<br>
+														<!-- <div class="container-reviewform">
+															<div class="row" style="margin-top:40px;">
+																<div class="col-md-6">
+														    	<div class="well well-sm">
+														            <div class="text-right">
+														                <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Leave a Review</a>
+														            </div>
 
-<% if (restaurant.escape("name") === "Chipotle") { %>
+														            <div class="row" id="post-review-box" style="display:none;">
+														                <div class="col-md-12">
+														                    <form accept-charset="UTF-8" action="" method="post">
+														                        <input id="ratings-hidden" name="rating" type="hidden">
+														                        <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
+
+														                        <div class="text-right">
+														                            <div class="stars starrr" data-rating="0"></div>
+														                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
+														                            <span class="glyphicon glyphicon-remove"></span>Cancel</a>
+														                            <button class="btn btn-success btn-lg" type="submit">Save</button>
+														                        </div>
+														                    </form>
+														                </div>
+														            </div>
+														        </div>
+
+																</div>
+															</div>
+														</div> -->
 	
-	
-<% } else if (restaurant.escape("name") === "Burger King") { %>
-	
-	
-<% } else if (restaurant.escape("name") === "McDonalds") { %>
-
-
-<% } else if (restaurant.escape("name") === "Sushiritto") { %>
-
-
-<% } else if (restaurant.escape("name") === "La Folie") { %>
-	
-
-	
-<% } %>
-
-
-
-	<div class="reviews">
-		<ul class="review-list">
-		</ul>
-	</div>
-	<div class="review-form">
-	</div>
 </div>
 
