@@ -27,10 +27,6 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 		return this;
 	},
 	
-	//want to write a renderListingView in that method we will iterate through every item in this.collection and then generate a subview for that listing
-	//the method that will generate each individual subview for each listing will be called addListing and inside that method you will create a new listingView and then pass in the listing as the model
-	//lastly in the addListing method you will addSubview for that newly created review and then finally in the original render method you will call attachSubviews to add all of the newly created subviews on to the page.
-	
 	addListing: function (listing) {
 		var listingShow = new NomNom.Views.ListingShow({
 			model: listing
@@ -40,29 +36,27 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	
 	renderListings: function () {
 		var that = this;
-		this.collection.each(function (listing) {
+		var restaurants = this.collection.first().restaurants();
+		restaurants.each(function (listing) {
 			that.addListing(listing);
 		});
 	},
 	
-	
-	
-	hoverThing: function(event) {
-		console.log("hovering over: "+ event.currentTarget);
-		console.log(this.collection.get($(event.currentTarget).data('id')).marker);
-		window.marker = this.collection.get($(event.currentTarget).data('id')).marker;
-		this.collection.get($(event.currentTarget).data('id')).marker.icon.strokeColor = "blue";
-	},
-	
-	hoverOff: function(event) {
-		console.log("leaving: " + event.currentTarget);
-		this.collection.get($(event.currentTarget).data('id')).marker.icon[strokeColor] = "red";
+	initializeMap: function () {
+		this.geocoder = new google.maps.Geocoder();
+		var mapOptions = {
+      center: { lat: 37.751994, lng: -122.443341},
+      zoom: 12
+    };
+	  this.map = new google.maps.Map(this.$('#map-canvas')[0],
+	      mapOptions);
 	},
 	
 	dropMarkers: function () {
 		var that = this;
 		var marker = 0;
-		this.collection.each(function(restaurant) {
+		var restaurants = this.collection.first().restaurants();
+		restaurants.each(function(restaurant) {
 			var address = restaurant.escape("address");
 		  that.geocoder.geocode( { 'address': address}, function(results, status) {
 		    if (status == google.maps.GeocoderStatus.OK) {
@@ -72,30 +66,12 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 		          position: results[0].geometry.location
 		      });
 					
-					google.maps.event.addListener(restaurant.marker, 'click', that.toggleBounce.bind(that, marker));
+					// google.maps.event.addListener(restaurant.marker, 'click', that.toggleBounce.bind(that, marker));
 		    } else {
 					console.log('Geocode was not successful for the following reason: ' + status);
 		    }
 			});
 	  });
-	},
-	
-	
-	
-	
-	
-	
-	
-	
-	initializeMap: function () {
-		this.geocoder = new google.maps.Geocoder();
-		var mapOptions = {
-      center: { lat: 37.751994, lng: -122.443341},
-      zoom: 12
-    };
-		console.log("entered initialize map first");
-	  this.map = new google.maps.Map(this.$('#map-canvas')[0],
-	      mapOptions);
 	},
 	
 	currentLocation: function () { //traces user's current position and brings it up on map
@@ -167,19 +143,29 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	  });
 	},
 	
-	toggleBounce: function (marker) {
-
-	  if (marker.getAnimation() != null) {
-	    marker.setAnimation(null);
-	  } else {
-	    marker.setAnimation(google.maps.Animation.BOUNCE);
-	  }
-	},
 	
-	// onRender: function () {
-	// 	this.initializeMap();
-	// },
+	//optional things to add later
 	
+	// hoverThing: function(event) {
+// 		console.log("hovering over: "+ event.currentTarget);
+// 		console.log(this.collection.get($(event.currentTarget).data('id')).marker);
+// 		window.marker = this.collection.get($(event.currentTarget).data('id')).marker;
+// 		this.collection.get($(event.currentTarget).data('id')).marker.icon.strokeColor = "blue";
+// 	},
+//
+// 	hoverOff: function(event) {
+// 		console.log("leaving: " + event.currentTarget);
+// 		this.collection.get($(event.currentTarget).data('id')).marker.icon[strokeColor] = "red";
+// 	},
+//
+// 	toggleBounce: function (marker) {
+//
+// 	  if (marker.getAnimation() != null) {
+// 	    marker.setAnimation(null);
+// 	  } else {
+// 	    marker.setAnimation(google.maps.Animation.BOUNCE);
+// 	  }
+// 	},
 });
 
 
