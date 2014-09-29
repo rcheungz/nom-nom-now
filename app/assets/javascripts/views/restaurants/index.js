@@ -5,7 +5,7 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	
 	events: {
 		"click .geocode": "codeAddress",
-		// "mouseover a": "hoverThing",
+		//"mouseover a": "hoverThing",
 	// 	"mouseout a": "hoverOff"
 	},
 	
@@ -165,10 +165,9 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	//optional things to add later
 	
 	// hoverThing: function(event) {
-// 		console.log("hovering over: "+ event.currentTarget);
-// 		console.log(this.collection.get($(event.currentTarget).data('id')).marker);
-// 		window.marker = this.collection.get($(event.currentTarget).data('id')).marker;
-// 		this.collection.get($(event.currentTarget).data('id')).marker.icon.strokeColor = "blue";
+//
+// 		window.marker = this.collection.first().restaurants().first().marker
+// 		this.collection.first().restaurants().first().marker =  "https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=D|FF0000|000000";
 // 	},
 //
 // 	hoverOff: function(event) {
