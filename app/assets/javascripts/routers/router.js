@@ -5,6 +5,7 @@ NomNom.Routers.Router = Backbone.Router.extend({
 	
 	routes: {
 		"": "search",
+		"random": "randomRestaurant",
 		"restaurants": "searchResults",
 		"restaurants/:id": "show"
 	},
@@ -23,6 +24,22 @@ NomNom.Routers.Router = Backbone.Router.extend({
 				that._swapView(indexView);
 			}
 		});
+	},
+	
+	randomRestaurant: function () {
+		//pass in the collection of restaurants then in the view access the user's current position and filter out all results that are within a 5 mile radius, then randomly select
+		//one of those results and then display the information on it including a map displaying the location relative to where the user is now.
+		var that = this;
+		NomNom.Collections.categories.fetch({ // don't know what the best way to do this is, these seems fucked up!
+			data: $.param({ query: "restaurants" }),
+			success: function () {
+				var randomView = new NomNom.Views.RestaurantRandom({
+					collection: NomNom.Collections.categories.first().restaurants()
+				});
+				that._swapView(randomView);
+			}
+		});
+		
 	},
 	
 	show: function (id) {
