@@ -1,56 +1,112 @@
-NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
+NomNom.Views.RestaurantRandom = Backbone.View.extend({
 	template: JST["restaurants/random"],
 
 	events: {
-		"click button": "searchAgain",
+		"click button": "getCurrentCoords('226 Kearny St San Francisco, CA 94108')",
+	},
+	
+	initialize: function () {
+		this.currentCoords = null;
+		this.geocoder = new google.maps.Geocoder();
+		this.bounds = new google.maps.LatLngBounds();
+		this.markersArray = [];
 	},
 
 	render: function () {
-		this.randomSelect();
+		//this.randomSelect();
 		var renderedContent = this.template({
+			view: this
 		});
 		this.$el.html(renderedContent);
-		this.currentLocation();
+		this.calculateDistances("226 Kearny St San Francisco, CA 94108");
+		//this.calculateDistances();
 		return this;
 	},
 
-	randomSelect: function () {
-
-	},
-
-	filterRestaurants: function () { //filters out the collection to only contain restaurants that are within a certain distance of the user's current location
-
-	},
-
-	currentLocation: function () { //traces user's current position and brings it up on map this shit is weird ASK ABOUT MINI LOADING MAP
-	debugger;
-	  var mapOptions = {
-	    zoom: 6
-	  };
-	  this.map = new google.maps.Map(this.$('#map-canvas')[0],
-	      mapOptions);
-
-	  // Try HTML5 geolocation
+	calculateDistances: function (dest) {
 		var that = this;
-	  if(navigator.geolocation) {
-	    navigator.geolocation.getCurrentPosition(function(position) {
-	      var pos = new google.maps.LatLng(position.coords.latitude,
-	                                       position.coords.longitude);
-
-	      var infowindow = new google.maps.InfoWindow({
-	        map: that.map,
-	        position: pos,
-	        content: 'Location found using HTML5.'
-	      });
-	      that.map.setCenter(pos)
-				that.map.setZoom(15);
-	    }, function() {
-	      handleNoGeolocation(true);
-	    });
+		var mapOptions = {
+      zoom: 6
+    };
+		  if(navigator.geolocation) {
+		    navigator.geolocation.getCurrentPosition(function(position) {
+		      pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+					
+				  that.map = new google.maps.Map(that.$('#map-canvas')[0], mapOptions);
+					
+				  var service = new google.maps.DistanceMatrixService();
+				  service.getDistanceMatrix(
+			 	    {
+			 	      origins: [pos],
+			 	      destinations: [dest],
+			 	      travelMode: google.maps.TravelMode.DRIVING,
+			 	      unitSystem: google.maps.UnitSystem.METRIC,
+			 	      avoidHighways: false,
+			 	      avoidTolls: false
+			 	    }, that.callback.bind(that));
+					
+		    }, function() {
+		      handleNoGeolocation(true);
+		    });
+		  } else {
+		    // Browser doesn't support Geolocation
+		    handleNoGeolocation(false);
+		  }	
+	},
+	
+	callback: function (response, status) {
+	  if (status != google.maps.DistanceMatrixStatus.OK) {
+	    alert('Error was: ' + status);
 	  } else {
-	    // Browser doesn't support Geolocation
-	    handleNoGeolocation(false);
+	    var origins = response.originAddresses;
+	    var destinations = response.destinationAddresses;
+	    var outputDiv = $('#outputDiv');
+	    outputDiv.innerHTML = '';
+	    this.deleteOverlays();
+
+	    for (var i = 0; i < origins.length; i++) {
+	      var results = response.rows[i].elements;
+	      this.addMarker(origins[i], false);
+	      for (var j = 0; j < results.length; j++) {
+	        this.addMarker(destinations[j], true);
+	        outputDiv.innerHTML += origins[i] + ' to ' + destinations[j]
+	            + ': ' + results[j].distance.text + ' in '
+	            + results[j].duration.text + '<br>';
+	      }
+	    }
 	  }
+	},
+
+	addMarker: function (location, isDestination) {
+	  var icon;
+	  if (isDestination) {			
+	    icon = 'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=D|FF0000|000000';
+	  } else {
+	    icon = 'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=O|FFFF00|000000';
+	  }
+		var that = this;
+	  this.geocoder.geocode({'address': location}, function(results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+	      that.bounds.extend(results[0].geometry.location);
+	      that.map.fitBounds(that.bounds);
+	      var marker = new google.maps.Marker({
+	        map: that.map,
+	        position: results[0].geometry.location,
+	        icon: icon
+	      });
+	      that.markersArray.push(marker);
+	    } else {
+	      alert('Geocode was not successful for the following reason: '
+	        + status);
+	    }
+	  });
+	},
+
+	deleteOverlays: function () {
+	  for (var i = 0; i < this.markersArray.length; i++) {
+	    this.markersArray[i].setMap(null);
+	  }
+	  this.markersArray = [];
 	},
 	
 	handleNoGeolocation: function (errorFlag) {
@@ -69,26 +125,5 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 	  var infowindow = new google.maps.InfoWindow(options);
 	  this.map.setCenter(options.position);
 	},
-	//
-	// codeAddress: function () { //used to find coordinates of given address
-	//   var address = document.getElementById('address').value;
-	// 	var that = this;
-	//   this.geocoder.geocode( { 'address': address}, function(results, status) {
-	// 		console.log("entered geocoder loop");
-	//     if (status == google.maps.GeocoderStatus.OK) {
-	// 			console.log("entered status loop");
-	//       that.map.setCenter(results[0].geometry.location);
-	//       var marker = new google.maps.Marker({
-	//           map: that.map,
-	//           position: results[0].geometry.location
-	//       });
-	//     } else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
-	//             setTimeout(function() {
-	//                 Geocode(address);
-	//             }, 200);
-	// 		} else {
-	// 			alert('Geocode was not successful for the following reason: ' + status);
-	//     }
-	//   });
 
 });
