@@ -2,56 +2,75 @@ NomNom.Views.RestaurantRandom = Backbone.View.extend({
 	template: JST["restaurants/random"],
 
 	events: {
-		"click button": "getCurrentCoords('226 Kearny St San Francisco, CA 94108')",
 	},
 
 	initialize: function () {
+		view = this;
 		this.currentCoords = null;
+		this.directionsService = new google.maps.DirectionsService();
 		this.geocoder = new google.maps.Geocoder();
 		this.bounds = new google.maps.LatLngBounds();
 		//this.listenTo(this.collection, "sync", this.calculateDistances)
 		this.markersArray = [];
 	},
-
+	
 	render: function () {
 		//this.randomSelect();
 		var renderedContent = this.template({
 			view: this
 		});
 		this.$el.html(renderedContent);
-		//this.filterRestaurants();
-		//this.calculateDistances("226 Kearny St San Francisco, CA 94108");
 		this.calculateDistances();
-		view = this;
+		this.map = new google.maps.Map(this.$('#map-canvas')[0], { zoom: 10 });
+		this.directionsDisplay = new google.maps.DirectionsRenderer();
+		this.directionsDisplay.setMap(this.map);
 		return this;
 	},
 
+	randomSelect: function () {
+	  var arr = this.collection.pluck("id");
+	  return this.collection.get(arr[Math.floor(Math.random() * arr.length)]);
+	},
 
-
+	calcRoute: function (startPos, endPos) {
+		var that = this;
+		var request = {
+	      origin: startPos,
+	      destination:endPos.escape("address"),
+	      travelMode: google.maps.TravelMode.DRIVING
+	  };
+		$("#outputDiv").html()
+	  this.directionsService.route(request, function(response, status) {
+	    if (status == google.maps.DirectionsStatus.OK) {
+	      that.directionsDisplay.setDirections(response);
+	    }
+	  });
+	},
 
 	calculateDistances: function () {
 		var that = this;
+		var destinations = [];
 		this.collection.each(function(restaurant) {
+			destinations.push(restaurant.escape("address"));
+		});
 			var mapOptions = {
 	      zoom: 6
 	    };
-			var destination = restaurant.escape("address");
 		  if(navigator.geolocation) {
 		    navigator.geolocation.getCurrentPosition(function(position) {
-		      var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-				  // that.map = new google.maps.Map(that.$('#map-canvas')[0], mapOptions);
+		      that.pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
 				  var service = new google.maps.DistanceMatrixService();
 					var result;
 				  service.getDistanceMatrix(
 			 	    {
-			 	      origins: [pos],
-			 	      destinations: [destination],
+			 	      origins: [that.pos],
+			 	      destinations: destinations,
 			 	      travelMode: google.maps.TravelMode.DRIVING,
 			 	      unitSystem: google.maps.UnitSystem.IMPERIAL,
 			 	      avoidHighways: false,
 			 	      avoidTolls: false
-			 	    }, that.callback.bind(that, restaurant));
+			 	    }, that.callback.bind(that));
 						
 		    }, function() {
 		      handleNoGeolocation(true);
@@ -60,67 +79,29 @@ NomNom.Views.RestaurantRandom = Backbone.View.extend({
 		    // Browser doesn't support Geolocation
 		    handleNoGeolocation(false);
 		  }
-		});
 	},
 
-		callback: function (restaurant, response, status) {
-		  if (status != google.maps.DistanceMatrixStatus.OK) {
-		    alert('Error was: ' + status);
-		  } else {
-		    var origins = response.originAddresses;
-		    var destinations = response.destinationAddresses;
-		    var outputDiv = $('#outputDiv');
-		    outputDiv.innerHTML = '';
-		    this.deleteOverlays();
-
-		    for (var i = 0; i < origins.length; i++) {
-		      var results = response.rows[i].elements;
-		      //this.addMarker(origins[i], false);
-		      for (var j = 0; j < results.length; j++) {
-		        // this.addMarker(destinations[j], true);
-// 		        outputDiv.html(origins[i] + ' to ' + destinations[j]
-// 		            + ': ' + results[j].distance.text + ' in '
-// 		            + results[j].duration.text + '<br>');
-						var distance = parseFloat(results[j].distance.text, 10);
-
-						if (distance > 2.0) {
-							this.collection.remove(restaurant);
-						}
-		      }
-		    }
-		  }
-		},
-
-	addMarker: function (location, isDestination) {
-	  var icon;
-	  if (isDestination) {			
-	    icon = 'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=D|FF0000|000000';
+	callback: function (response, status) {
+	  if (status != google.maps.DistanceMatrixStatus.OK) {
+	    alert('Error was: ' + status);
 	  } else {
-	    icon = 'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=O|FFFF00|000000';
-	  }
-		var that = this;
-	  this.geocoder.geocode({'address': location}, function(results, status) {
-	    if (status == google.maps.GeocoderStatus.OK) {
-	      that.bounds.extend(results[0].geometry.location);
-	      that.map.fitBounds(that.bounds);
-	      var marker = new google.maps.Marker({
-	        map: that.map,
-	        position: results[0].geometry.location,
-	        icon: icon
-	      });
-	      that.markersArray.push(marker);
-	    } else {
-	      alert('Geocode was not successful for the following reason: '
-	        + status);
-	    }
-	  });
-	},
+	    var origins = response.originAddresses;
+	    var destinations = response.destinationAddresses;
+	    
 
-	deleteOverlays: function () {
-	  for (var i = 0; i < this.markersArray.length; i++) {
-	    this.markersArray[i].setMap(null);
+	    for (var i = 0; i < origins.length; i++) {
+	      var results = response.rows[i].elements;
+	      for (var j = 0; j < results.length; j++) {
+					var distance = parseFloat(results[j].distance.text, 10);
+					if (distance > 2.0) {
+						var restaurant = this.collection.findWhere({ address: destinations[j] });
+						this.collection.remove(restaurant);
+					}
+	      }
+	    }
+			var endPos = this.randomSelect();
+			this.calcRoute(this.pos, endPos);
 	  }
-	  this.markersArray = [];
 	},
 	
 	handleNoGeolocation: function (errorFlag) {

@@ -77,6 +77,7 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 		restaurants.each(function(restaurant) {
 			var address = restaurant.escape("address");
 		  that.geocoder.geocode( { 'address': address}, function(results, status) {
+				debugger;
 		    if (status == google.maps.GeocoderStatus.OK) {
 		      restaurant.marker = new google.maps.Marker({
 		          map: that.map,
