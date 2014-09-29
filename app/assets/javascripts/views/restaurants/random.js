@@ -1,4 +1,4 @@
-NomNom.Views.RestaurantRandom = Backbone.View.extend({
+NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 	template: JST["restaurants/random"],
 
 	events: {

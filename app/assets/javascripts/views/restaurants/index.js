@@ -74,11 +74,13 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 		var that = this;
 		var marker = 0;
 		var restaurants = this.collection.first().restaurants();
+		var numEntered = 0
+		debugger;
 		restaurants.each(function(restaurant) {
 			var address = restaurant.escape("address");
 		  that.geocoder.geocode( { 'address': address}, function(results, status) {
-				debugger;
 		    if (status == google.maps.GeocoderStatus.OK) {
+					console.log(numEntered++);
 		      restaurant.marker = new google.maps.Marker({
 		          map: that.map,
 							animation: google.maps.Animation.DROP,
@@ -140,27 +142,25 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	  this.map.setCenter(options.position);
 	},
 	
-	codeAddress: function () { //used to find coordinates of given address
-	  var address = document.getElementById('address').value;
-		var that = this;
-	  this.geocoder.geocode( { 'address': address}, function(results, status) {
-			console.log("entered geocoder loop");
-	    if (status == google.maps.GeocoderStatus.OK) {
-				console.log("entered status loop");
-	      that.map.setCenter(results[0].geometry.location);
-	      var marker = new google.maps.Marker({
-	          map: that.map,
-	          position: results[0].geometry.location
-	      });
-	    } else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {    
-            setTimeout(function() {
-                Geocode(address);
-            }, 200);
-			} else {
-				alert('Geocode was not successful for the following reason: ' + status);
-	    }
-	  });
-	},
+	// codeAddress: function () { //used to find coordinates of given address
+	//   var address = document.getElementById('address').value;
+	// 	var that = this;
+	//   this.geocoder.geocode( { 'address': address}, function(results, status) {
+	//     if (status == google.maps.GeocoderStatus.OK) {
+	//       that.map.setCenter(results[0].geometry.location);
+	//       var marker = new google.maps.Marker({
+	//           map: that.map,
+	//           position: results[0].geometry.location
+	//       });
+	//     } else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+	//             setTimeout(function() {
+	//                 Geocode(address);
+	//             }, 200);
+	// 		} else {
+	// 			alert('Geocode was not successful for the following reason: ' + status);
+	//     }
+	//   });
+	// },
 	
 	
 	//optional things to add later
