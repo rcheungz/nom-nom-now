@@ -25,7 +25,7 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 	},
 	
 	onRender: function() {
-		this.map = new google.maps.Map(this.$('#map-canvas')[0], { zoom: 10 });
+		this.map = new google.maps.Map(this.$('#map-canvas-rand')[0], { zoom: 10 });
 		this.directionsDisplay = new google.maps.DirectionsRenderer();
 		this.directionsDisplay.setMap(this.map);			
 		this.calculateDistances();
@@ -97,14 +97,12 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 	      var results = response.rows[i].elements;
 	      for (var j = 0; j < results.length; j++) {
 					var distance = parseFloat(results[j].distance.text, 10);
-					if (distance > 1.0) {
+					if (distance > 2.0) {
 						var restaurant = this.collection.findWhere({ address: destinations[j] });
 						this.collection.remove(restaurant);
-						debugger;
 					}
 	      }
 	    }
-			debugger;
 			var endPos = this.randomSelect();
 			this.calcRoute(this.pos, endPos);
 	  }
