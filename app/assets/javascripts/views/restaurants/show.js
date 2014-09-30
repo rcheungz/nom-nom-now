@@ -91,14 +91,14 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 	},
 	
 	renderReviewsForm: function () {
-		// var view = new NomNom.Views.ReviewForm({
-// 			collection: this.model.reviews(),
-// 			model: new NomNom.Models.Review()
-// 		});
+		var view = new NomNom.Views.ReviewForm({
+			collection: this.model.reviews(),
+			model: new NomNom.Models.Review()
+		});
 		
 		this.$(".container-reviewform").val("");
-		this.reviewForm();
-		// this.addSubview(".review-form", view);
+		//this.reviewForm();
+		this.addSubview(".review-form", view);
 	},
 	
 	renderCarousel: function () { 
@@ -163,6 +163,7 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 		  });
 
 		  $('.starrr').on('starrr:change', function(e, value){
+				debugger;
 		    ratingsField.val(value);
 		  });
 		});

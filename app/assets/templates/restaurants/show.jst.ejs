@@ -80,7 +80,7 @@
 			                                <div id="slide-content-5">
 			                                    <h2>McDonald's</h2>
 			                                    <p>Meal for one.</p>
-			                                    <p class="sub-text">October 24 2014</p>
+			                                    <p class="sub-text">October 24 2014></p>
 			                                </div>
 			                            </div>
 			                        </div>
@@ -141,14 +141,14 @@
 			<div class="col-offset-2 col-md-4">
 	    	<div class="well well-sm">
 	            <div class="text-right">
-	                <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Leave a Review</a>
+	                <a class="btn btn-success btn-primary" id="open-review-box">Leave a Review</a>
 	            </div>
 
 	            <div class="row" id="post-review-box" style="display:none;">
 	                <div class="col-md-12">
 	                    <form accept-charset="UTF-8" action="" method="post">
 	                        <input id="ratings-hidden" name="rating" type="hidden">
-	                        <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
+	                        <textarea class="form-control animated" cols="45" id="new-review" name="review[body]" placeholder="Enter your review here..." rows="10"></textarea>
 
 	                        <div class="text-right">
 	                            <div class="stars starrr" data-rating="0"></div>
@@ -158,6 +158,22 @@
 	                        </div>
 	                    </form>
 	                </div>
+					
+<!--									<h1>Add New Review</h1>
+									<br>
+									<textarea name="review[body]" cols="45" rows="5"></textarea>
+									<br>
+									<div class="input-group">
+									      <span class="input-group-addon rating-radio">
+													<label> 1 <input id="radio1" type="radio" name="review[rating]" value="1"></label>
+													<label> 2 <input id="radio2" type="radio" name="review[rating]" value="2"></label>
+													<label> 3 <input id="radio3" type="radio" name="review[rating]" value="3"></label>
+													<label> 4 <input id="radio4" type="radio" name="review[rating]" value="4"></label>
+													<label> 5 <input id="radio5" type="radio" name="review[rating]" value="5"></label>
+									      </span>
+									</div>
+									<button type="button" class="btn btn-primary">Submit</button>
+									 -->
 	            </div>
 	        </div>
 
