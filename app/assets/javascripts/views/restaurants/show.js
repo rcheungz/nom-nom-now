@@ -30,6 +30,76 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 		});
 	},
 	
+
+
+	
+	updateRating: function () {
+		this.ratingView.update(this._calculateRating());
+	},
+	
+	addReview: function (review) {
+		var reviewView = new NomNom.Views.ReviewShow({
+			model: review
+		});
+		this.addSubview(".review-list", reviewView);
+	},
+	
+	_roundToHalf: function (num) {
+	    num = Math.round(num*2)/2;
+	    return num;
+	},
+
+	_calculateRating: function () {
+		var sum = 0;
+		var nums = 0;
+		this.model.reviews().each( function (review) {
+			nums++;
+			sum += review.attributes.rating;
+		});
+		this.rating = this._roundToHalf(sum / nums);//allows outside to access rating
+		return this._roundToHalf(sum / nums);
+	},
+	
+	render: function () {
+		var renderedContent = this.template({
+			restaurant: this.model,
+			rating: this._calculateRating()
+		});
+		this.$el.html(renderedContent);
+		// this.currentLocation();
+		//this.codeAddress();
+		this.initializeMap();
+		this.attachSubviews();
+		return this;
+	},
+	
+	renderRating: function () {
+		var updatedRating = this._calculateRating();
+		this.ratingView = new NomNom.Views.RatingShow({
+			rating: updatedRating,
+		});
+		this.addSubview(".restaurant-rating", this.ratingView);
+	},
+	
+	renderReviews: function () {
+		var that = this;
+		this.model.reviews().each(function (review) {
+			that.addReview(review);
+		});
+	},
+	
+	renderReviewsForm: function () {
+		var view = new NomNom.Views.ReviewForm({
+			collection: this.model.reviews(),
+			model: new NomNom.Models.Review()
+		});
+		this.$(".review-form").val("");
+		this.addSubview(".review-form", view);
+	},
+	
+	
+});
+
 	
 	// displayMap: function () {
 // 		this.geocoder = new google.maps.Geocoder();
@@ -120,72 +190,3 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 // 	  var infowindow = new google.maps.InfoWindow(options);
 // 	  this.map.setCenter(options.position);
 // 	},
-
-	
-	updateRating: function () {
-		this.ratingView.update(this._calculateRating());
-	},
-	
-	addReview: function (review) {
-		var reviewView = new NomNom.Views.ReviewShow({
-			model: review
-		});
-		this.addSubview(".review-list", reviewView);
-	},
-	
-	_roundToHalf: function (num) {
-	    num = Math.round(num*2)/2;
-	    return num;
-	},
-
-	_calculateRating: function () {
-		var sum = 0;
-		var nums = 0;
-		this.model.reviews().each( function (review) {
-			nums++;
-			sum += review.attributes.rating;
-		});
-		this.rating = this._roundToHalf(sum / nums);//allows outside to access rating
-		return this._roundToHalf(sum / nums);
-	},
-	
-	render: function () {
-		var renderedContent = this.template({
-			restaurant: this.model,
-			rating: this._calculateRating()
-		});
-		this.$el.html(renderedContent);
-		// this.currentLocation();
-		//this.codeAddress();
-		this.initializeMap();
-		this.attachSubviews();
-		return this;
-	},
-	
-	renderRating: function () {
-		var updatedRating = this._calculateRating();
-		this.ratingView = new NomNom.Views.RatingShow({
-			rating: updatedRating,
-		});
-		this.addSubview(".restaurant-rating", this.ratingView);
-	},
-	
-	renderReviews: function () {
-		var that = this;
-		this.model.reviews().each(function (review) {
-			that.addReview(review);
-		});
-	},
-	
-	renderReviewsForm: function () {
-		var view = new NomNom.Views.ReviewForm({
-			collection: this.model.reviews(),
-			model: new NomNom.Models.Review()
-		});
-		this.$(".review-form").val("");
-		this.addSubview(".review-form", view);
-	},
-	
-	
-});
-

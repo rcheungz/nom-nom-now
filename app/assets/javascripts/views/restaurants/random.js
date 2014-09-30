@@ -20,11 +20,14 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 			view: this
 		});
 		this.$el.html(renderedContent);
-		this.calculateDistances();
+		return this;
+	},
+	
+	onRender: function() {
 		this.map = new google.maps.Map(this.$('#map-canvas')[0], { zoom: 10 });
 		this.directionsDisplay = new google.maps.DirectionsRenderer();
-		this.directionsDisplay.setMap(this.map);
-		return this;
+		this.directionsDisplay.setMap(this.map);			
+		this.calculateDistances();
 	},
 
 	randomSelect: function () {
