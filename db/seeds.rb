@@ -8,9 +8,9 @@
 
 #Users
 #Guest Login Account
-User.new(username: "jeckchen@dinosaurs.me", password: "password")
 seeds = [];
 #Restaurants in San Francisco
+User.create(username: "jeckchen@dinosaurs.me", password: "password")
 seeds << Restaurant.new(name: "Ike's Place", address: "3489 16th Street, San Francisco, CA 94114, USA") #Category: Sandwiches _______________________________________________ 1
 seeds << Restaurant.new(name: "Brenda's French Soul Food", address: "652 Polk Street, San Francisco, CA 94102, USA") #Category Cajun French Soul Food _______________________ 2
 seeds << Restaurant.new(name: "Burmese Superstar", address: "309 Clement Street, San Francisco, CA 94118, USA") #Category Burmese ___________________________________________ 3                                            

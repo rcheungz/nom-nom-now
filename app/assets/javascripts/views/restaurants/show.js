@@ -14,27 +14,19 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 	
 	initializeMap: function () {
 		this.geocoder = new google.maps.Geocoder();
+		var lat = parseFloat(this.model.escape("latitude"));
+		var lng = parseFloat(this.model.escape("longitude"));
 		var mapOptions = {
-      center: { lat: 37.751994, lng: -122.443341},
-      zoom: 12
+      center: { lat: parseFloat(this.model.escape("latitude")), lng: parseFloat(this.model.escape("longitude")) },
+      zoom: 15
     };
-		console.log("entered initialize map first");
 	  this.map = new google.maps.Map(this.$('#map-canvas')[0],
 	      mapOptions);
-		var that = this;
-		var address = this.model.escape("address");
-	  that.geocoder.geocode( { 'address': address}, function(results, status) {
-	    if (status == google.maps.GeocoderStatus.OK) {
-	      that.model.marker = new google.maps.Marker({
-	          map: that.map,
-						animation: google.maps.Animation.DROP,
-	          position: results[0].geometry.location
-	      });
-
-				// google.maps.event.addListener(that.model.marker, 'click', that.toggleBounce.bind(that, marker));
-	    } else {
-				console.log('Geocode was not successful for the following reason: ' + status);
-	    }
+		var pos = new google.maps.LatLng(this.model.escape("latitude"), this.model.escape("longitude"))
+		this.model.marker = new google.maps.Marker({
+		    map: this.map,
+				animation: google.maps.Animation.DROP,
+		    position: pos
 		});
 	},
 	
@@ -56,78 +48,78 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 	
 	
 	
-	codeAddress: function () { //used to find coordinates of given address
-		this.geocoder = new google.maps.Geocoder();
-		var mapOptions = {
-	    zoom: 15
-	  };
-	  this.map = new google.maps.Map(this.$('#map-canvas')[0], mapOptions);
-	  var address = this.model.escape("address");
-		var that = this;
-	  this.geocoder.geocode( { 'address': address}, function(results, status) {
-	    if (status == google.maps.GeocoderStatus.OK) {
-	      that.map.setCenter(results[0].geometry.location);
-	      var marker = new google.maps.Marker({
-	          map: that.map,
-	          position: results[0].geometry.location
-	      });
-	    } else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
-	          setTimeout(function() {
-	              Geocode(address);
-	          }, 200);
-			} else {
-				console.log('Geocode was not successful for the following reason: ' + status);
-	    }
-	  });
-	},
+	// codeAddress: function () { //used to find coordinates of given address
+	// 	this.geocoder = new google.maps.Geocoder();
+	// 	var mapOptions = {
+	//     zoom: 15
+	//   };
+	//   this.map = new google.maps.Map(this.$('#map-canvas')[0], mapOptions);
+	//   var address = this.model.escape("address");
+	// 	var that = this;
+	//   this.geocoder.geocode( { 'address': address}, function(results, status) {
+	//     if (status == google.maps.GeocoderStatus.OK) {
+	//       that.map.setCenter(results[0].geometry.location);
+	//       var marker = new google.maps.Marker({
+	//           map: that.map,
+	//           position: results[0].geometry.location
+	//       });
+	//     } else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+	//           setTimeout(function() {
+	//               Geocode(address);
+	//           }, 200);
+	// 		} else {
+	// 			console.log('Geocode was not successful for the following reason: ' + status);
+	//     }
+	//   });
+	// },
 
 
 
-	currentLocation: function () { //traces user's current position and brings it up on map
-		this.geocoder = new google.maps.Geocoder();
-	  var mapOptions = {
-	    zoom: 6
-	  };
-	  this.map = new google.maps.Map(this.$('#map-canvas')[0], //zero indexing is important here for some reason
-	      mapOptions);
+	// currentLocation: function () { //traces user's current position and brings it up on map
+// 		this.geocoder = new google.maps.Geocoder();
+// 	  var mapOptions = {
+// 	    zoom: 6
+// 	  };
+// 	  this.map = new google.maps.Map(this.$('#map-canvas')[0], //zero indexing is important here for some reason
+// 	      mapOptions);
 
 	  // Try HTML5 geolocation
-		var that = this;
-	  if(navigator.geolocation) {
-	    navigator.geolocation.getCurrentPosition(function(position) {
-	      var pos = new google.maps.LatLng(that.codeAddress());
-	      var infowindow = new google.maps.InfoWindow({
-	        map: that.map,
-	        position: pos,
-	        content: that.model.escape("name")
-	      });
-	      that.map.setCenter(pos)
-				that.map.setZoom(15);
-	    }, function() {
-	      handleNoGeolocation(true);
-	    });
-	  } else {
-	    // Browser doesn't support Geolocation
-	    handleNoGeolocation(false);
-	  }
-	},
-	
-	handleNoGeolocation: function (errorFlag) {
-	  if (errorFlag) {
-	    var content = 'Error: The Geolocation service failed.';
-	  } else {
-	    var content = 'Error: Your browser doesn\'t support geolocation.';
-	  }
-
-	  var options = {
-	    map: this.map,
-	    position: new google.maps.LatLng(60, 105),
-	    content: content
-	  };
-
-	  var infowindow = new google.maps.InfoWindow(options);
-	  this.map.setCenter(options.position);
-	},
+		// var that = this;
+// 	  if(navigator.geolocation) {
+// 	    navigator.geolocation.getCurrentPosition(function(position) {
+// 	      var pos = new google.maps.LatLng(that.codeAddress());
+// 	      var infowindow = new google.maps.InfoWindow({
+// 	        map: that.map,
+// 	        position: pos,
+// 	        content: that.model.escape("name")
+// 	      });
+// 	      that.map.setCenter(pos)
+// 				that.map.setZoom(15);
+// 	    }, function() {
+// 	      handleNoGeolocation(true);
+// 	    });
+// 	  } else {
+// 	    // Browser doesn't support Geolocation
+// 	    handleNoGeolocation(false);
+// 	  }
+// 	},
+//
+// 	handleNoGeolocation: function (errorFlag) {
+// 	  if (errorFlag) {
+// 	    var content = 'Error: The Geolocation service failed.';
+// 	  } else {
+// 	    var content = 'Error: Your browser doesn\'t support geolocation.';
+// 	  }
+//
+// 	  var options = {
+// 	    map: this.map,
+// 	    position: new google.maps.LatLng(60, 105),
+// 	    content: content
+// 	  };
+//
+// 	  var infowindow = new google.maps.InfoWindow(options);
+// 	  this.map.setCenter(options.position);
+// 	},
 
 	
 	updateRating: function () {
@@ -164,8 +156,8 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 		});
 		this.$el.html(renderedContent);
 		// this.currentLocation();
-		this.codeAddress();
-		// this.initializeMap();
+		//this.codeAddress();
+		this.initializeMap();
 		this.attachSubviews();
 		return this;
 	},
