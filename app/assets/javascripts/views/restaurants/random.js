@@ -16,11 +16,11 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 	},
 	
 	render: function () {
-		//this.randomSelect();
 		var renderedContent = this.template({
 			view: this
 		});
 		this.$el.html(renderedContent);
+		this.attachSubviews();
 		return this;
 	},
 	
@@ -30,17 +30,27 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 		this.directionsDisplay.setMap(this.map);			
 		this.calculateDistances();
 	},
+	
+	renderRandomListing: function (listing) {
+		var rating = this._calculateRating(listing);
+		$("#random-listing").html("");
+		var listingShow = new NomNom.Views.ListingShow({
+			model: listing,
+			rating: rating
+		});
+		this.addSubview("#random-listing", listingShow);
+	},
 
-	randomSelect: function () {
-	  var arr = this.collection.pluck("id");
-	  return this.collection.get(arr[Math.floor(Math.random() * arr.length)]);
+	randomSelect: function (destinations) {
+		var address = destinations[Math.floor(Math.random() * destinations.length)];
+	 	return address;
 	},
 
 	calcRoute: function (startPos, endPos) {
 		var that = this;
 		var request = {
-	      origin: startPos,
-	      destination:endPos.escape("address"),
+	      origin: startPos, //latlng google position object
+	      destination:endPos, //address
 	      travelMode: google.maps.TravelMode.DRIVING
 	  };
 		$("#outputDiv").html()
@@ -54,35 +64,56 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 	calculateDistances: function () {
 		var that = this;
 		var destinations = [];
-		this.collection.each(function(restaurant) {
-			destinations.push(restaurant.escape("address"));
-		});
-			var mapOptions = {
-	      zoom: 6
-	    };
-		  if(navigator.geolocation) {
-		    navigator.geolocation.getCurrentPosition(function(position) {
-		      that.pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-				  var service = new google.maps.DistanceMatrixService();
-					var result;
-				  service.getDistanceMatrix(
-			 	    {
-			 	      origins: [that.pos],
-			 	      destinations: destinations,
-			 	      travelMode: google.maps.TravelMode.DRIVING,
-			 	      unitSystem: google.maps.UnitSystem.IMPERIAL,
-			 	      avoidHighways: false,
-			 	      avoidTolls: false
-			 	    }, that.callback.bind(that));
-						
-		    }, function() {
-		      handleNoGeolocation(true);
-		    });
-		  } else {
-		    // Browser doesn't support Geolocation
-		    handleNoGeolocation(false);
-		  }
+		var mapOptions = {
+      zoom: 6
+    };
+	  if(navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(function(position) {
+	      that.pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				
+				that.geocoder.geocode({'latLng': that.pos}, function(results, status) { 
+			    if (status == google.maps.GeocoderStatus.OK) {
+			      if (results[1]) {
+			        var currentAddress = results[1].formatted_address; //this chunk into a method
+							that.collection.each(function(restaurant) {
+								var address = restaurant.escape("address");
+								if (currentAddress.indexOf("San Francisco") >= 0) {
+									if (address.indexOf("San Francisco") >= 0) {
+										destinations.push(restaurant.escape("address"));
+									}
+								} else if (currentAddress.indexOf("WA") >= 0) {
+									if(address.indexOf("Seattle") >= 0) {
+										desintations.push(restaurant.escape("address"));
+									}
+								}
+							});
+							
+						  var service = new google.maps.DistanceMatrixService(); //this chunk into a method
+							var result;
+						  service.getDistanceMatrix(
+					 	    {
+					 	      origins: [that.pos],
+					 	      destinations: destinations,
+					 	      travelMode: google.maps.TravelMode.DRIVING,
+					 	      unitSystem: google.maps.UnitSystem.IMPERIAL,
+					 	      avoidHighways: false,
+					 	      avoidTolls: false
+					 	    }, that.callback.bind(that));
+					
+			      } else {
+			        alert('No results found');
+			      }
+			    } else {
+			      alert('Geocoder failed due to: ' + status);
+			    }
+				});
+	    }, function() {
+	      handleNoGeolocation(true);
+	    });
+	  } else {
+	    // Browser doesn't support Geolocation
+	    handleNoGeolocation(false);
+	  }
 	},
 
 	callback: function (response, status) {
@@ -91,19 +122,25 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 	  } else {
 	    var origins = response.originAddresses;
 	    var destinations = response.destinationAddresses;
-	    
-
 	    for (var i = 0; i < origins.length; i++) {
 	      var results = response.rows[i].elements;
 	      for (var j = 0; j < results.length; j++) {
 					var distance = parseFloat(results[j].distance.text, 10);
-					if (distance > 2.0) {
-						var restaurant = this.collection.findWhere({ address: destinations[j] });
-						this.collection.remove(restaurant);
+					var distanceLimit;
+					
+					if(origins[0].indexOf("San Francisco") >= 0) { //this chunk into a method
+						distanceLimit = 2.0;
+					} else {
+						distanceLimit = 30.0;
+					}
+					if (distance > distanceLimit) {
+						destinations.splice(destinations.indexOf(destinations[j]), 1);
 					}
 	      }
 	    }
-			var endPos = this.randomSelect();
+			var endPos = this.randomSelect(destinations);
+			var randomRestaurant = this.collection.findWhere({ address: endPos });
+			this.renderRandomListing(randomRestaurant);
 			this.calcRoute(this.pos, endPos);
 	  }
 	},
@@ -123,6 +160,22 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 
 	  var infowindow = new google.maps.InfoWindow(options);
 	  this.map.setCenter(options.position);
+	},
+	
+	_roundToHalf: function (num) {
+	    num = Math.round(num*2)/2;
+	    return num;
+	},
+
+	_calculateRating: function (restaurant) {
+		var sum = 0;
+		var nums = 0;
+		restaurant.reviews().each( function (review) {
+			nums++;
+			sum += review.attributes.rating;
+		});
+		// this.rating = this._roundToHalf(sum / nums);//allows outside to access rating
+		return this._roundToHalf(sum / nums);
 	},
 
 });
