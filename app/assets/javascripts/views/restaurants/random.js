@@ -69,8 +69,8 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
     };
 	  if(navigator.geolocation) {
 	    navigator.geolocation.getCurrentPosition(function(position) { 47.558910, -122.163282
-	      // that.pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-				that.pos = new google.maps.LatLng(47.558910, -122.163282);
+	      that.pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				// that.pos = new google.maps.LatLng(47.558910, -122.163282);
 				that.geocoder.geocode({'latLng': that.pos}, function(results, status) { 
 			    if (status == google.maps.GeocoderStatus.OK) {
 			      if (results[1]) {
