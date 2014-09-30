@@ -82,7 +82,7 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 										destinations.push(restaurant.escape("address"));
 									}
 								} else if (currentAddress.indexOf("WA") >= 0) {
-									if(address.indexOf("Seattle") >= 0) {
+									if(address.indexOf("WA") >= 0) {
 										destinations.push(restaurant.escape("address"));
 									}
 								}
