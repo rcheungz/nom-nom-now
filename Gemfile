@@ -35,6 +35,10 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
 
+gem 'geocoder'
+
+gem 'figaro'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

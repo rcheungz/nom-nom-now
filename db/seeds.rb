@@ -1,37 +1,41 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# The data can then be loaded with the rake db:seed (or newd alongside the db with db:setup).
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#   cities = City.new([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.new(name: 'Emanuel', city: cities.first)
 
 #Users
 #Guest Login Account
-User.create(username: "jeckchen@dinosaurs.me", password: "password")
-
+User.new(username: "jeckchen@dinosaurs.me", password: "password")
+seeds = [];
 #Restaurants in San Francisco
-Restaurant.create(name: "Ike's Place", address: "3489 16th Street, San Francisco, CA 94114, USA") #Category: Sandwiches _______________________________________________ 1
-Restaurant.create(name: "Brenda's French Soul Food", address: "652 Polk Street, San Francisco, CA 94102, USA") #Category Cajun French Soul Food _______________________ 2
-Restaurant.create(name: "Burmese Superstar", address: "309 Clement Street, San Francisco, CA 94118, USA") #Category Burmese ___________________________________________ 3                                            
-Restaurant.create(name: "San Tung Chinese Restaurant", address: "1031 Irving Street, San Francisco, CA 94122, USA") #Chinese __________________________________________ 4                                           
-Restaurant.create(name: "Gary Danko", address: "800 North Point Street, San Francisco, CA 94109, USA") #American __________________________________________________________ 5                                                 
-Restaurant.create(name: "NOPA", address: "560 Divisadero Street, San Francisco, CA 94117, USA") #American Modern European Breakfast Brunch Breakfast & Brunch _________ 6          
-Restaurant.create(name: "The House", address: "1230 Grant Avenue, San Francisco, CA 94133, USA") #Asian Fusion _______________________________________________________ 7                                      
-Restaurant.create(name: "El Farolito", address: "2779 Mission Street, San Francisco, CA 94110, USA") #Mexican Tacos Burritos __________________________________________ 8                                     
-Restaurant.create(name: "Kokkari Estiatorio", address: "200 Jackson Street, San Francisco, CA 94111, USA") #Greek Mediterranean _______________________________________ 9                                     
-Restaurant.create(name: "Roy's Restaurant", address: "575 Mission Street, San Francisco, CA 94105, USA") #Seafood ___________________________________________ 10                                     
-Restaurant.create(name: "Saigon Sandwich", address: "560 Larkin Street, San Francisco, CA 94102, USA") #Vietnamese Sandwiches _________________________________________ 11                                          
-Restaurant.create(name: "Little Star Pizza", address: "846 Divisadero Street, San Francisco, CA 94117, USA") #Italian Pizza ___________________________________________ 12                                        
-Restaurant.create(name: "Tonys Pizza Napoletana", address: "1570 Streetockton Street, San Francisco, CA 94133, USA") # Italian Pizza ______________________________________ 13                                   
-Restaurant.create(name: "The Monk's Kettle", address: "3141 16th Street, San Francisco, CA 94103, USA") #Bars Gastropubs ______________________________________________ 14                                            
-Restaurant.create(name: "Umami Burger", address: "2184 Union Street, San Francisco, CA 94123, USA") #Burgers __________________________________________________________ 15                                                 
-Restaurant.create(name: "Swan Oyster Depot", address: "1517 Polk Street, San Francisco, CA 94109, USA") #Seafood ______________________________________________________ 16                                             
-Restaurant.create(name: "Taqueria Cancún", address: "2288 Mission Street, San Francisco, CA 94110, USA") #Mexican Tacos Burritos ______________________________________ 17                                  
-Restaurant.create(name: "Sotto Mare", address: "552 Green Street, San Francisco, CA 94133, USA") #Italian Seafood _____________________________________________________ 18                                             
-Restaurant.create(name: "Sushirrito", address: "59 New Montgomery Street, San Francisco, CA 94105, USA") #Japanese Sushi Burritos _____________________________________ 19                              
-Restaurant.create(name: "Kare-Ken", address: "552 Jones Street, San Francisco, CA 94102, USA") #Japanese Curry ________________________________________________________ 20                                                   
+seeds << Restaurant.new(name: "Ike's Place", address: "3489 16th Street, San Francisco, CA 94114, USA") #Category: Sandwiches _______________________________________________ 1
+seeds << Restaurant.new(name: "Brenda's French Soul Food", address: "652 Polk Street, San Francisco, CA 94102, USA") #Category Cajun French Soul Food _______________________ 2
+seeds << Restaurant.new(name: "Burmese Superstar", address: "309 Clement Street, San Francisco, CA 94118, USA") #Category Burmese ___________________________________________ 3                                            
+seeds << Restaurant.new(name: "San Tung Chinese Restaurant", address: "1031 Irving Street, San Francisco, CA 94122, USA") #Chinese __________________________________________ 4                                           
+seeds << Restaurant.new(name: "Gary Danko", address: "800 North Point Street, San Francisco, CA 94109, USA") #American __________________________________________________________ 5                                                 
+seeds << Restaurant.new(name: "NOPA", address: "560 Divisadero Street, San Francisco, CA 94117, USA") #American Modern European Breakfast Brunch Breakfast & Brunch _________ 6          
+seeds << Restaurant.new(name: "The House", address: "1230 Grant Avenue, San Francisco, CA 94133, USA") #Asian Fusion _______________________________________________________ 7                                      
+seeds << Restaurant.new(name: "El Farolito", address: "2779 Mission Street, San Francisco, CA 94110, USA") #Mexican Tacos Burritos __________________________________________ 8                                     
+seeds << Restaurant.new(name: "Kokkari Estiatorio", address: "200 Jackson Street, San Francisco, CA 94111, USA") #Greek Mediterranean _______________________________________ 9                                     
+seeds << Restaurant.new(name: "Roy's Restaurant", address: "575 Mission Street, San Francisco, CA 94105, USA") #Seafood ___________________________________________ 10                                     
+seeds << Restaurant.new(name: "Saigon Sandwich", address: "560 Larkin Street, San Francisco, CA 94102, USA") #Vietnamese Sandwiches _________________________________________ 11                                          
+seeds << Restaurant.new(name: "Little Star Pizza", address: "846 Divisadero Street, San Francisco, CA 94117, USA") #Italian Pizza ___________________________________________ 12                                        
+seeds << Restaurant.new(name: "Tonys Pizza Napoletana", address: "1570 Streetockton Street, San Francisco, CA 94133, USA") # Italian Pizza ______________________________________ 13                                   
+seeds << Restaurant.new(name: "The Monk's Kettle", address: "3141 16th Street, San Francisco, CA 94103, USA") #Bars Gastropubs ______________________________________________ 14                                            
+seeds << Restaurant.new(name: "Umami Burger", address: "2184 Union Street, San Francisco, CA 94123, USA") #Burgers __________________________________________________________ 15                                                 
+seeds << Restaurant.new(name: "Swan Oyster Depot", address: "1517 Polk Street, San Francisco, CA 94109, USA") #Seafood ______________________________________________________ 16                                             
+seeds << Restaurant.new(name: "Taqueria Cancún", address: "2288 Mission Street, San Francisco, CA 94110, USA") #Mexican Tacos Burritos ______________________________________ 17                                  
+seeds << Restaurant.new(name: "Sotto Mare", address: "552 Green Street, San Francisco, CA 94133, USA") #Italian Seafood _____________________________________________________ 18                                             
+seeds << Restaurant.new(name: "Sushirrito", address: "59 New Montgomery Street, San Francisco, CA 94105, USA") #Japanese Sushi Burritos _____________________________________ 19                              
+seeds << Restaurant.new(name: "Kare-Ken", address: "552 Jones Street, San Francisco, CA 94102, USA") #Japanese Curry ________________________________________________________ 20                                                   
 
+seeds.each do |seed|
+  seed.save
+  sleep(1)
+end
 #Categories
 Category.create(name: "sandwiches")         #1
 Category.create(name: "cajun")              #2
