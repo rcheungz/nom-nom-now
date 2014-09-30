@@ -2,6 +2,7 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 	template: JST["restaurants/random"],
 
 	events: {
+		"click button": "onRender"
 	},
 
 	initialize: function () {
@@ -96,12 +97,14 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 	      var results = response.rows[i].elements;
 	      for (var j = 0; j < results.length; j++) {
 					var distance = parseFloat(results[j].distance.text, 10);
-					if (distance > 2.0) {
+					if (distance > 1.0) {
 						var restaurant = this.collection.findWhere({ address: destinations[j] });
 						this.collection.remove(restaurant);
+						debugger;
 					}
 	      }
 	    }
+			debugger;
 			var endPos = this.randomSelect();
 			this.calcRoute(this.pos, endPos);
 	  }
