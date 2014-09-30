@@ -5,6 +5,119 @@
 			<h3><%= restaurant.escape("address") %></h3>
 	
 			<div class="restaurant-rating"></div>
+			
+			<div class="container">
+			     				<div id="main_area">
+			                <!-- Slider -->
+			                <div class="row">
+			                    <div class="col-xs-12" id="slider">
+			                        <!-- Top part of the slider -->
+			                        <div class="row">
+			                            <div class="col-sm-8" id="carousel-bounding-box">
+			                                <div class="carousel slide" id="myCarousel">
+			                                    <!-- Carousel items -->
+			                                    <div class="carousel-inner">
+			                                        <div class="active item" data-slide-number="0">
+			                                        <img src="assets/sushirrito/sushi.jpg"></div>
+
+			                                        <div class="item" data-slide-number="1">
+			                                        <img src="assets/sushirrito/nachos.jpg"></div>
+
+			                                        <div class="item" data-slide-number="2">
+			                                        <img src="assets/chipotle/burrito.jpg"></div>
+
+			                                        <div class="item" data-slide-number="3">
+			                                        <img src="assets/la_folie/food1.jpg"></div>
+
+			                                        <div class="item" data-slide-number="4">
+			                                        <img src="assets/la_folie/food2.jpg"></div>
+
+			                                        <div class="item" data-slide-number="5">
+			                                        <img src="assets/McD/fancy.jpg"></div>
+			                                    </div><!-- Carousel nav -->
+			                                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			                                        <span class="glyphicon glyphicon-chevron-left"></span>                                       
+			                                    </a>
+			                                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			                                        <span class="glyphicon glyphicon-chevron-right"></span>                                       
+			                                    </a>                                
+			                                    </div>
+			                            </div>
+
+			                            <div class="col-sm-4" id="carousel-text"></div>
+
+			                            <div id="slide-content" style="display: none;">
+			                                <div id="slide-content-0">
+			                                    <h2>Geisha's Kiss</h2>
+			                                    <p>Really good!</p>
+			                                    <p class="sub-text">October 24 2014</p>
+			                                </div>
+
+			                                <div id="slide-content-1">
+			                                    <h2>Lava Nachos</h2>
+			                                    <p>Get them before they sell out!</p>
+			                                    <p class="sub-text">October 24 2014</p>
+			                                </div>
+
+			                                <div id="slide-content-2">
+			                                    <h2>Chipotle Burrito</h2>
+			                                    <p>Meal of Champions</p>
+			                                    <p class="sub-text">October 24 2014</p>
+			                                </div>
+
+			                                <div id="slide-content-3">
+			                                    <h2>La Folie</h2>
+			                                    <p>Some fancy stuff</p>
+			                                    <p class="sub-text">October 24 2014</p>
+			                                </div>
+
+			                                <div id="slide-content-4">
+			                                    <h2>La Folie</h2>
+			                                    <p>More fancy stuff</p>
+			                                    <p class="sub-text">October 24 2014</p>
+			                                </div>
+
+			                                <div id="slide-content-5">
+			                                    <h2>McDonald's</h2>
+			                                    <p>Meal for one.</p>
+			                                    <p class="sub-text">October 24 2014</p>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div><!--/Slider-->
+
+			                <div class="row hidden-xs" id="slider-thumbs">
+			                        <!-- Bottom switcher of slider -->
+			                        <ul class="hide-bullets">
+			                            <li class="col-sm-2">
+			                                <a class="thumbnail" id="carousel-selector-0"><img src="assets/sushirrito/sushi.jpg"></a>
+			                            </li>
+
+			                            <li class="col-sm-2">
+			                                <a class="thumbnail" id="carousel-selector-1"><img src="assets/sushirrito/nachos.jpg"></a>
+			                            </li>
+
+			                            <li class="col-sm-2">
+			                                <a class="thumbnail" id="carousel-selector-2"><img src="assets/chipotle/burrito.jpg"></a>
+			                            </li>
+
+			                            <li class="col-sm-2">
+			                                <a class="thumbnail" id="carousel-selector-3"><img src="assets/la_folie/food1.jpg"></a>
+			                            </li>
+
+			                            <li class="col-sm-2">
+			                                <a class="thumbnail" id="carousel-selector-4"><img src="assets/la_folie/food2.jpg"></a>
+			                            </li>
+
+			                            <li class="col-sm-2">
+			                                <a class="thumbnail" id="carousel-selector-5"><img src="assets/McD/fancy.jpg"></a>
+			                            </li>
+			                        </ul>                 
+			                </div>
+			        </div>
+			</div>
+
 			<br>
 			<br>
 
@@ -23,34 +136,34 @@
   <div class="text-right">
 	
 		
-														<!-- <div class="container-reviewform">
-															<div class="row" style="margin-top:40px;">
-																<div class="col-md-6">
-														    	<div class="well well-sm">
-														            <div class="text-right">
-														                <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Leave a Review</a>
-														            </div>
+	<div class="container-reviewform">
+		<div class="row" style="margin-top:40px;">
+			<div class="col-offset-2 col-md-4">
+	    	<div class="well well-sm">
+	            <div class="text-right">
+	                <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Leave a Review</a>
+	            </div>
 
-														            <div class="row" id="post-review-box" style="display:none;">
-														                <div class="col-md-12">
-														                    <form accept-charset="UTF-8" action="" method="post">
-														                        <input id="ratings-hidden" name="rating" type="hidden">
-														                        <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
+	            <div class="row" id="post-review-box" style="display:none;">
+	                <div class="col-md-12">
+	                    <form accept-charset="UTF-8" action="" method="post">
+	                        <input id="ratings-hidden" name="rating" type="hidden">
+	                        <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
 
-														                        <div class="text-right">
-														                            <div class="stars starrr" data-rating="0"></div>
-														                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
-														                            <span class="glyphicon glyphicon-remove"></span>Cancel</a>
-														                            <button class="btn btn-success btn-lg" type="submit">Save</button>
-														                        </div>
-														                    </form>
-														                </div>
-														            </div>
-														        </div>
+	                        <div class="text-right">
+	                            <div class="stars starrr" data-rating="0"></div>
+	                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
+	                            <span class="glyphicon glyphicon-remove"></span>Cancel</a>
+	                            <button class="btn btn-success btn-lg" type="submit">Save</button>
+	                        </div>
+	                    </form>
+	                </div>
+	            </div>
+	        </div>
 
-																</div>
-															</div>
-														</div> -->
+			</div>
+		</div>
+	</div>
 	
 </div>
 

@@ -24,6 +24,8 @@ NomNom.Routers.Router = Backbone.Router.extend({
 				that._swapView(indexView);
 			}
 		});
+		
+		//add a NomNom.Collections.restaurants.fetch that will do the same as above except it will query the restaurants instead of the categories
 	},
 	
 	randomRestaurant: function () {

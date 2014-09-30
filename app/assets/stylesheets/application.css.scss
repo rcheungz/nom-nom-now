@@ -30,8 +30,20 @@ body > .container {
 	padding-top: 60px;
 }
 
+
+/* this chunk is for the image carousel on each of the show pages*/
+.hide-bullets {
+list-style:none;
+margin-left: -40px;
+margin-top:20px;
+}
+/*end the chunk for the show page image carousel*/
+
+
+
+
 /*this chunk here is used for the expanding review form*/
-/*.animated {
+.animated {
     -webkit-transition: height 0.2s;
     -moz-transition: height 0.2s;
     transition: height 0.2s;
@@ -42,7 +54,8 @@ body > .container {
     margin: 20px 0;
     font-size: 24px;
     color: #d17581;
-}*/
+}
+/* end of the expanding review form css*/
 
 .listingrating {
 	height: 20px;
@@ -232,7 +245,7 @@ body {
   display: block;
 }
 
-
+/*end chunk for carousel rows*/
 
 
 
