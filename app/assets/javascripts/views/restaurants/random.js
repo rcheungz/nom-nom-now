@@ -68,9 +68,9 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
       zoom: 6
     };
 	  if(navigator.geolocation) {
-	    navigator.geolocation.getCurrentPosition(function(position) {
-	      that.pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-				
+	    navigator.geolocation.getCurrentPosition(function(position) { 47.558910, -122.163282
+	      // that.pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				that.pos = new google.maps.LatLng(47.558910, -122.163282);
 				that.geocoder.geocode({'latLng': that.pos}, function(results, status) { 
 			    if (status == google.maps.GeocoderStatus.OK) {
 			      if (results[1]) {
@@ -83,11 +83,10 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 									}
 								} else if (currentAddress.indexOf("WA") >= 0) {
 									if(address.indexOf("Seattle") >= 0) {
-										desintations.push(restaurant.escape("address"));
+										destinations.push(restaurant.escape("address"));
 									}
 								}
 							});
-							
 						  var service = new google.maps.DistanceMatrixService(); //this chunk into a method
 							var result;
 						  service.getDistanceMatrix(
@@ -122,23 +121,23 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 	  } else {
 	    var origins = response.originAddresses;
 	    var destinations = response.destinationAddresses;
+			var filteredDest = [];
 	    for (var i = 0; i < origins.length; i++) {
 	      var results = response.rows[i].elements;
 	      for (var j = 0; j < results.length; j++) {
 					var distance = parseFloat(results[j].distance.text, 10);
 					var distanceLimit;
-					
 					if(origins[0].indexOf("San Francisco") >= 0) { //this chunk into a method
 						distanceLimit = 2.0;
 					} else {
 						distanceLimit = 30.0;
 					}
-					if (distance > distanceLimit) {
-						destinations.splice(destinations.indexOf(destinations[j]), 1);
+					if (distance <= distanceLimit) {
+						filteredDest.push(destinations[j]);
 					}
 	      }
 	    }
-			var endPos = this.randomSelect(destinations);
+			var endPos = this.randomSelect(filteredDest);
 			var randomRestaurant = this.collection.findWhere({ address: endPos });
 			this.renderRandomListing(randomRestaurant);
 			this.calcRoute(this.pos, endPos);
