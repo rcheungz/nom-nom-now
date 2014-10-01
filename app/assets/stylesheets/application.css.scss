@@ -28,9 +28,9 @@ body {
 	width: 100%;
 }
 
-body > .container {
+/*body > .container {
 	padding-top: 60px;
-}
+}*/
 
 
 /* this chunk is for the image carousel on each of the show pages*/
@@ -152,9 +152,9 @@ body {
 
 
 
-.dropdown-toggle {
+/*.dropdown-toggle {
 	color: green;
-}
+}*/
 
 #footer {
 	position: relative;
@@ -201,7 +201,7 @@ body {
 }
 
 .signin:hover, .guest:hover {
-	background: #33CC33;
+	background: #1975FF;
 	color: white;
 }
 
@@ -212,11 +212,6 @@ body {
 .rating {
 	height: 40px;
 	width: 200px;
-}
-
-.image-circle {
-	height: 50px;
-	width: 50px;
 }
 
 #map-canvas {
@@ -247,8 +242,7 @@ body {
 /*this chunk is for the carousel rows for displaying listing views*/
 
 body {
-  
-    background-color: #f9f9f9;
+/*  background: rgba(254, 254, 254, 0.7);*/
 }
 
 /*REQUIRED*/
@@ -335,7 +329,12 @@ body {
 /*end chunk for carousel rows*/
 
 
-
+/*.new-session-form {
+	width: 40%;
+	margin-left: auto;
+	margin-right:auto;
+	background: rgba(254, 254, 254, 0.7);
+}*/
 
 
 
