@@ -1,3 +1,21 @@
+<div class="new-session-form" style="text-align: center;">
+	<div style="padding: 5%">
+		<img src="/assets/FINALLOGO.png" style="background: white; margin-bottom: 10px">
+		<form action="/users" method="post" role="form">
+			<div class="form-group" style="width: 80%">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input type="email" name="user[username]" class="form-control" placeholder="Email Address" style="width: 100%; margin-bottom: 10px">
+				<input type="password" name="user[password]" class="form-control" placeholder="Password" style="width: 100%">
+			</div>
+
+			<button type="submit" class="btn btn-default signin" style="width: 80%; margin-bottom: 10px; background: #FF4D4D; color: white">Sign Up</button>
+		</form>
+	</div>
+</div>
+
+<!--
+
+
 <h1>Sign Up</h1>
 
 <form action="/users" method="post">
@@ -9,4 +27,7 @@
     <input name="user[password]" type="password"><br>
   </label><br>
   <input type="submit" value="Submit" class="btn btn-primary"><br>
-</form>
+</form> -->
+
+
+
