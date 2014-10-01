@@ -19,11 +19,13 @@ NomNom.Routers.Router = Backbone.Router.extend({
 			data: $.param({ query: searchString }),
 			success: function () {
 				var indexView = new NomNom.Views.RestaurantIndex({
-					collection: NomNom.Collections.categories
+					collection: NomNom.Collections.categories,
 				});
+				debugger;
 				that._swapView(indexView);
 			}
 		});
+		debugger;
 		
 		//add a NomNom.Collections.restaurants.fetch that will do the same as above except it will query the restaurants instead of the categories
 	},

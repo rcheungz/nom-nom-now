@@ -12,22 +12,6 @@ NomNom.Views.ReviewForm = Backbone.CompositeView.extend({
 		return this;
 	},
 	
-// 	getRating: function (event) {
-// 		event.preventD();
-// 		debugger;
-// 		// if ($("#radio1").checked) {
-// // 			return 1;
-// // 		} else if ($("#radio2").checked) {
-// // 			return 2;
-// // 		} else if ($("#radio3").checked) {
-// // 			return 3;
-// // 		} else if ($("#radio4").checked) {
-// // 			return 4;
-// // 		} else if ($("#radio5").checked) {
-// // 			return 5;
-// // 		}
-// 	},
-	
 	create: function (event) {
 		event.preventDefault();
 		var rating = this.getRating();
