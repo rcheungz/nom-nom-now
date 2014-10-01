@@ -1,3 +1,29 @@
+<div class="new-session-form" style="text-align: center;">
+	<div style="padding: 5%">
+		<img src="/assets/finallogo.png" style="background: white">
+		<form action="/session" method="post" role="form">
+			<div class="form-group" style="width: 80%">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input type="email" name="user[username]" class="form-control" placeholder="Email Address" style="width: 100%; margin-bottom: 10px">
+				<input type="password" name="user[password]" class="form-control" placeholder="Password" style="width: 100%">
+			</div>
+
+			<button type="submit" class="btn btn-default signin" style="width: 80%; margin-bottom: 10px; background: #FF4D4D; color: white">Sign In</button>
+		</form>
+	
+		<form action="/session" method="post" role="form">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input type="hidden" name="user[username]" value="jeckchen@dinosaurs.me">
+			<input type="hidden" name="user[password]" value="password">
+			<button type="submit" class="btn btn-default guest-signin" style="border-bottom: 10px; width: 80%; background: #FF4D4D; color: white">Guest Login</button>
+		</form>
+	</div>
+</div>
+
+
+
+
+
 <!-- <div class="new-session-form">
 	<div class="row signin-header">
 		<h1>Sign In</h1>
@@ -36,28 +62,4 @@
 		Not a member? Hurry up and sign up <%= link_to "HERE", new_user_url %>
 	</form>
 </div> -->
-
-<div class="new-session-form" style="text-align: center;">
-	<div style="padding: 5%">
-	<h1>Logo Goes Here</h1>
-	<!-- <img src="assets/finallogo.png"> -->
-	<form action="/session" method="post" role="form">
-		<div class="form-group" style="width: 80%">
-			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-			<input type="email" name="user[username]" class="form-control" placeholder="Email Address" style="width: 100%; margin-bottom: 10px">
-			<input type="password" name="user[password]" class="form-control" placeholder="Password" style="width: 100%">
-		</div>
-
-		<button type="submit" class="btn btn-default signin" style="width: 80%; margin-bottom: 10px; background: #FF4D4D; color: white">Sign In</button>
-	</form>
-	
-	<form action="/session" method="post" role="form">
-		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-		<input type="hidden" name="user[username]" value="jeckchen@dinosaurs.me">
-		<input type="hidden" name="user[password]" value="password">
-		<button type="submit" class="btn btn-default guest-signin" style="border-bottom: 10px; width: 80%; background: #FF4D4D; color: white">Guest Login</button>
-	</form>
-</div>
-</div>
-
 

@@ -39,6 +39,8 @@ gem 'geocoder'
 
 gem 'figaro'
 
+gem 'jquery-ui-rails'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

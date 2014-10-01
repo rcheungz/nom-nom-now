@@ -17,7 +17,7 @@ NomNom.Views.RestaurantSearch = Backbone.View.extend({
 	render: function (){
 		var renderedContent = this.template();
 		this.$el.html(renderedContent);
-		//this.autoComplete();
+		// this.autoComplete();
 		return this;
 	},
 	
@@ -46,7 +46,7 @@ NomNom.Views.RestaurantSearch = Backbone.View.extend({
 // 	      "Scala",
 // 	      "Scheme"
 // 	    ];
-// 	    $( "#tags" ).autocomplete({
+// 	    $( ".search-bar" ).autocomplete({
 // 	      source: availableTags
 // 	    });
 // 	 },
