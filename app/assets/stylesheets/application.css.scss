@@ -75,7 +75,7 @@ body {
 .pizza-link {
   display: block;
   width: 250px;
-  border: 1px solid #ccc;
+  border: 1px solid #00000;
   float: left;
   position: relative;
   overflow: hidden;
@@ -83,7 +83,7 @@ body {
   margin: 1.5em;
   text-align: center;
   text-decoration: none;
-  color: white;
+  color: black;
   h3 {
     border-bottom: 1px solid #eee;
     padding: 3.5em 0 0.75em 0;
@@ -91,7 +91,7 @@ body {
     position: relative;
   }
   p {
-    color: #999;
+    color: black;
     margin: 0;
     position: relative;
     font-size: 1.5rem;
@@ -161,6 +161,7 @@ body {
 	height: 300px;
 	clear: both;
 	background: rgba(254, 254, 254, 0.4);
+/*	background: white;*/
 	color: #777777;
 }
 
