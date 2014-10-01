@@ -22,7 +22,7 @@
 
 
 body {
-	background-image: url("view.jpg");
+	background-image: url("raspberry.jpg");
 	height: 100%;
 	background-size: cover;
 	width: 100%;
@@ -111,7 +111,7 @@ body {
   }
   &:before {
     content: "";
-    background: #1975FF;
+    background: #FF3333;
     position: absolute;
     width: 50px;
     height: 50px;
@@ -329,14 +329,15 @@ body {
 /*end chunk for carousel rows*/
 
 
-/*.new-session-form {
-	width: 40%;
-	margin-left: auto;
-	margin-right:auto;
+.new-session-form {
+	width: 25%;
+	margin: auto;
 	background: rgba(254, 254, 254, 0.7);
-}*/
+}
 
-
+.signin-header {
+	margin: auto;
+}
 
 
 

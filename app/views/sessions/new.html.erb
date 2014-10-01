@@ -1,6 +1,7 @@
-<div class="new-session-form">
-	<h1>Sign In</h1>
-
+<!-- <div class="new-session-form">
+	<div class="row signin-header">
+		<h1>Sign In</h1>
+	</div>
 	<form class="form-horizontal signin-form" action="/session" method="post" role="form">
 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 		<div class="form-group">
@@ -34,8 +35,15 @@
 	</div>
 		Not a member? Hurry up and sign up <%= link_to "HERE", new_user_url %>
 	</form>
+</div> -->
+
+<div class="new-session-form">
+	<h1>Sign In</h1>
+	
+	<div class="form-group" style="width: 80%; margin-left: 10%;">
+		<input type="email" name="user[username]" class="form-control" placeholder="Email Address" style="width: 100%; margin-bottom: 10px">
+		<input type="password" name="user[password]" class="form-control" placeholder="Password" style="width: 100%">
+	</div>
 </div>
-
-
 
 
