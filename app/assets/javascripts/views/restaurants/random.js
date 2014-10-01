@@ -25,7 +25,7 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 	},
 	
 	onRender: function() {
-		this.map = new google.maps.Map(this.$('#map-canvas-rand')[0], { zoom: 10 });
+		this.map = new google.maps.Map(this.$('#map-canvas1')[0], { zoom: 10 });
 		this.directionsDisplay = new google.maps.DirectionsRenderer();
 		this.directionsDisplay.setMap(this.map);			
 		this.calculateDistances();
@@ -53,7 +53,7 @@ NomNom.Views.RestaurantRandom = Backbone.CompositeView.extend({
 	      destination:endPos, //address
 	      travelMode: google.maps.TravelMode.DRIVING
 	  };
-		$("#outputDiv").html()
+		$("#outputDiv").html()//not currently doing anything?
 	  this.directionsService.route(request, function(response, status) {
 	    if (status == google.maps.DirectionsStatus.OK) {
 	      that.directionsDisplay.setDirections(response);

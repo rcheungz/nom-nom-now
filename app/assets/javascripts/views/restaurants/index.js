@@ -20,7 +20,6 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 			restaurants: this.collection.first().restaurants(),//problem?
 		});
 		this.$el.html(renderedContent);
-		// this.initializeMap();//important this must stay here so that after the page renders then the map pops up so it isn't removed.
 		this.initializeMap();
 		this.dropMarkers();
 		this.renderListings();
@@ -31,7 +30,8 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 		var rating = this._calculateRating(listing);
 		var listingShow = new NomNom.Views.ListingShow({
 			model: listing,
-			rating: rating
+			rating: rating,
+			numReviews: listing.reviews().length
 		});
 		this.addSubview(".restaurants", listingShow);
 	},
