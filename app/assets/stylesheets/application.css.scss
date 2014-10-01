@@ -160,7 +160,7 @@ body {
 	position: relative;
 	height: 300px;
 	clear: both;
-	background-color: #101010;
+	background: rgba(254, 254, 254, 0.4);
 	color: #777777;
 }
 
@@ -332,6 +332,7 @@ body {
 .new-session-form {
 	width: 25%;
 	margin: auto;
+	margin-top: 5%;
 	background: rgba(254, 254, 254, 0.7);
 }
 
