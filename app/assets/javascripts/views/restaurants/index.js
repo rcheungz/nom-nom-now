@@ -17,7 +17,7 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	
 	render: function () { 
 		var renderedContent = this.template({
-			restaurants: this.collection.first().restaurants(),//problem?
+			restaurants: this.collection,//problem?
 		});
 		this.$el.html(renderedContent);
 		this.initializeMap();
@@ -38,7 +38,7 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	
 	renderListings: function () {
 		var that = this;
-		var restaurants = this.collection.first().restaurants();
+		var restaurants = this.collection;
 		restaurants.each(function (listing) {
 			that.addListing(listing);
 		});
@@ -72,7 +72,7 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	dropMarkers: function () {
 		var that = this;
 		var marker = 0;
-		var restaurants = this.collection.first().restaurants();
+		var restaurants = this.collection;
 		restaurants.each(function(restaurant) {
 			var address = restaurant.escape("address");
 			var pos = new google.maps.LatLng(restaurant.escape("latitude"), restaurant.escape("longitude"))

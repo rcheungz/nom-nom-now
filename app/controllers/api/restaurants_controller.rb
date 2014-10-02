@@ -1,7 +1,22 @@
 class Api::RestaurantsController < ApplicationController
   
   def index
-    @restaurants = Restaurant.all;
+    @restaurants = []
+    list = Restaurant.all
+    if params[:query]
+      searchString = params[:query].downcase
+      searchStrings = searchString.split(" ")
+      searchStrings.each do |string|
+        list.each do |restaurant|
+          category_names = restaurant.categories.collect { |category| category.name }
+          if restaurant.name.downcase.include?(string)
+            @restaurants << restaurant unless @restaurants.include?(restaurant)
+          elsif category_names.include?(string)
+            @restaurants << restaurant unless @restaurants.include?(restaurant)
+          end
+        end
+      end
+    end
     render :index
   end
   
