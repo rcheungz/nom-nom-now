@@ -5,10 +5,10 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 		this.renderRating();
 		
 		this.listenTo(this.model, "sync", this.render);
-		// this.listenTo(this.model, "sync", this.renderRating);
+		// this.listenTo(this.model, "sync", this.renderReviews);
 		this.listenTo(this.model.reviews(), "add", this.addReview);
 		this.listenTo(this.model.reviews(), "add", this.updateRating);
-		this.renderReviews();
+		//this.renderReviews();
 		this.renderReviewsForm();
 	},
 	
@@ -66,8 +66,6 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 			rating: this._calculateRating()
 		});
 		this.$el.html(renderedContent);
-		// this.currentLocation();
-		//this.codeAddress();
 		this.initializeMap();
 		this.renderCarousel();
 		this.reviewForm();
@@ -85,7 +83,7 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 	
 	renderReviews: function () {
 		var that = this;
-		this.model.reviews().each(function (review) {
+		this.model.reviews().each(function (review) { //this is being done two times
 			that.addReview(review);
 		});
 	},
