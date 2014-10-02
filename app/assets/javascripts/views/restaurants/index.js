@@ -40,8 +40,12 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	renderListings: function () {
 		var that = this;
 		var restaurants = this.collection;
+		var area = this.searchArea.toLowerCase().split(", ");
 		restaurants.each(function (listing) {
-			that.addListing(listing);
+			var address = listing.escape("address").toLowerCase();
+			if((address.indexOf(area[0]) > -1)) {
+				that.addListing(listing);
+			}
 		});
 	},
 	
@@ -73,7 +77,7 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	      center: { lat: 37.751994, lng: -122.443341},
 	      zoom: 12
     	};
-		} else if (this.searchArea.indexOf("WA") > -1) {
+		} else if (this.searchArea.indexOf("WA") > -1 || this.searchArea.toLowerCase().indexOf("seattle") > -1) {
 			mapOptions = {
 				center: { lat: 47.640011, lng: -122.259281},
 				zoom: 11
@@ -93,44 +97,53 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 		var restaurants = this.collection;
 		restaurants.each(function(restaurant) {
 			var address = restaurant.escape("address");
-			var pos = new google.maps.LatLng(restaurant.escape("latitude"), restaurant.escape("longitude"))
+			var pos = new google.maps.LatLng(restaurant.escape("latitude"), restaurant.escape("longitude"));
+			
+			var contentString = restaurant.escape("name") + "\n" + restaurant.escape("address");
+			restaurant.info = new google.maps.InfoWindow({
+			      content: contentString,
+			      maxWidth: 200
+			  });
       restaurant.marker = new google.maps.Marker({
           map: that.map,
 					animation: google.maps.Animation.DROP,
-          position: pos
+          position: pos,
       });
+			// google.maps.event.addListener(restaurant.marker, 'click', function() {
+// 			    restaurant.info.open(that.map, restaurant.marker);
+// 			});
 	  });
 	},
 	
-	currentLocation: function () { //traces user's current position and brings it up on map
-	  var mapOptions = {
-	    zoom: 6
-	  };
-	  this.map = new google.maps.Map(this.$('#map-canvas')[0],
-	      mapOptions);
-
-	  // Try HTML5 geolocation
-		var that = this;
-	  if(navigator.geolocation) {
-	    navigator.geolocation.getCurrentPosition(function(position) {
-	      var pos = new google.maps.LatLng(position.coords.latitude,
-	                                       position.coords.longitude);
-
-	      var infowindow = new google.maps.InfoWindow({
-	        map: that.map,
-	        position: pos,
-	        content: 'Location found using HTML5.'
-	      });
-	      that.map.setCenter(pos)
-				that.map.setZoom(15);
-	    }, function() {
-	      handleNoGeolocation(true);
-	    });
-	  } else {
-	    // Browser doesn't support Geolocation
-	    handleNoGeolocation(false);
-	  }
-	},
+	// currentLocation: function () { //traces user's current position and brings it up on map
+// 	  var mapOptions = {
+// 	    zoom: 6
+// 	  };
+// 	  this.map = new google.maps.Map(this.$('#map-canvas')[0],
+// 	      mapOptions);
+//
+// 	  // Try HTML5 geolocation
+// 		var that = this;
+// 	  if(navigator.geolocation) {
+// 	    navigator.geolocation.getCurrentPosition(function(position) {
+// 	      var pos = new google.maps.LatLng(position.coords.latitude,
+// 	                                       position.coords.longitude);
+//
+// 	      var infowindow = new google.maps.InfoWindow({
+// 	        map: that.map,
+// 	        position: pos,
+// 	        content: 'Location found using HTML5.'
+// 	      });
+// 	      that.map.setCenter(pos)
+// 				that.map.setZoom(15);
+// 	    }, function() {
+// 	      handleNoGeolocation(true);
+// 	    });
+// 	  } else {
+// 	    // Browser doesn't support Geolocation
+// 	    handleNoGeolocation(false);
+// 	  }
+	// },
 	
 	handleNoGeolocation: function (errorFlag) {
 	  if (errorFlag) {
