@@ -56,6 +56,45 @@ seeds << Restaurant.new(name: "Musashi's", address: "3720 Factoria Boulevard Sou
 seeds << Restaurant.new(name: "I Love Pho", address: "3900 Factoria Boulevard Southeast, Bellevue, WA 98006, USA") #Vietnamese ______________________________________________ 41
 seeds << Restaurant.new(name: "Teriyaki & More", address: "3080 148th Avenue Southeast, Bellevue, WA 98007, USA") #Japanese _________________________________________________ 42
 
+#More Restaurants in San Francisco
+seeds << Restaurant.new(name: "Show Dogs", address: "1020 Market Street, San Francisco, CA 94102, USA") #Hot Dogs, Sandwiches _______________________________________________ 43
+seeds << Restaurant.new(name: "Tú Lan", address: "8 6th Street, San Francisco, CA 94103, USA") #Vietnamese __________________________________________________________________ 44
+seeds << Restaurant.new(name: "Homeskillet", address: "1001 Market Street, San Francisco, CA 94103, USA") #American, Brunch & Breakfast, Burgers ____________________________ 45
+seeds << Restaurant.new(name: "Machine Coffee & Deli", address: "1024 Market Street, San Francisco, CA 94102, USA") #Cafes, Delis ___________________________________________ 46
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+
+#Restaurants in New Haven
+seeds << Restaurant.new(name: "Frank Pepe Pizzeria Napoletana", address: "157 Wooster Street, New Haven, CT 06511, USA") #Italian, Pizza ____________________________________ #63
+seeds << Restaurant.new(name: "Louis' Lunch", address: "263 Crown Street, New Haven, CT 06511, USA") #American, Burgers _____________________________________________________ #64
+seeds << Restaurant.new(name: "Modern Apizza", address: "874 State Street, New Haven, CT 06511, USA") #Pizza, Sandwiches ____________________________________________________ #65
+seeds << Restaurant.new(name: "Miya's Sushi", address: "68 Howe Street, New Haven, CT 06511, USA") #Sushi, Japanese _________________________________________________________ #66
+seeds << Restaurant.new(name: "Prime 16", address: "172 Temple Street, New Haven, CT 06510, USA") #American, Burgers, Gastropub _____________________________________________ #67
+seeds << Restaurant.new(name: "Caseus Fromagerie & Bistro", address: "93 Whitney Avenue, New Haven, CT 06510, USA") #American _______________________________________________ #68
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+
+
+
 
 seeds.each do |seed|
   seed.save
@@ -99,6 +138,7 @@ Category.create(name: "dim sum")            #34
 Category.create(name: "cuban")              #35
 Category.create(name: "steakhouse")         #36
 Category.create(name: "thai")               #37
+Category.create(name: "hotdogs")
 
 #Restaurant Categories (Join Table)
 

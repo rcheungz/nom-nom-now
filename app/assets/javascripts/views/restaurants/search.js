@@ -8,7 +8,8 @@ NomNom.Views.RestaurantSearch = Backbone.View.extend({
 	submitSearch: function (event) {
 		event.preventDefault();
 		var searchString = $("#search-bar").val();
-		var url = "restaurants?query=" + encodeURI(searchString);
+		var searchArea = $("#area-bar").val();
+		var url = "restaurants?query=" + encodeURI(searchString) + "+" + encodeURI(searchArea);
 		Backbone.history.navigate(url, { trigger: true });
 	},
 	

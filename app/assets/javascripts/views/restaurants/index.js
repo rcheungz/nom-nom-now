@@ -10,7 +10,8 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	},
 	
 	initialize: function (options) {
-		this.searchString = options.keyword;
+		// this.searchString = options.keyword;
+		this.searchArea = options.searchArea;
 		this.listenTo(this.collection, "sync", this.render);
 		this.attachSubviews();
 	},
@@ -61,12 +62,29 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 	},
 	
 	initializeMap: function () {
-		var mapOptions = {
-      center: { lat: 37.751994, lng: -122.443341},
-      zoom: 12
-    };
 	  this.map = new google.maps.Map(this.$('#map-canvas')[0],
-	      mapOptions);
+	      this.setMapOptions());
+	},
+	
+	setMapOptions: function () {
+		var mapOptions;
+		if (this.searchArea.indexOf("CA") > -1) {
+			mapOptions = {
+	      center: { lat: 37.751994, lng: -122.443341},
+	      zoom: 12
+    	};
+		} else if (this.searchArea.indexOf("WA") > -1) {
+			mapOptions = {
+				center: { lat: 47.640011, lng: -122.259281},
+				zoom: 11
+			}
+		} else if (this.searchArea.indexOf("CT") > -1 || this.searchArea.indexOf("New Haven") > -1) {
+			mapOptions = {
+				center: { lat: 41.311731, lng: -72.925605},
+				zoom: 14
+			}
+		}
+		return mapOptions;
 	},
 	
 	dropMarkers: function () {

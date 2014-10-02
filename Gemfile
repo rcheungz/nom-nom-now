@@ -41,6 +41,12 @@ gem 'figaro'
 
 gem 'jquery-ui-rails'
 
+gem 'lol_dba'
+
+#gem 'bullet', group: :development
+
+gem 'thin'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
