@@ -43,7 +43,7 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 		var area = this.searchArea.toLowerCase().split(", ");
 		restaurants.each(function (listing) {
 			var address = listing.escape("address").toLowerCase();
-			if((address.indexOf(area[0]) > -1) || address.indexOf("bellevue") > -1) {
+			if((address.indexOf(area[0]) > -1) || (address.indexOf("bellevue") > -1 && area[0] === "seattle")) {
 				that.addListing(listing);
 			}
 		});
@@ -95,21 +95,25 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 		var that = this;
 		var marker = 0;
 		var restaurants = this.collection;
-		debugger;
+		var area = this.searchArea.toLowerCase().split(", ");
 		restaurants.each(function(restaurant) {
-			var address = restaurant.escape("address");
-			var pos = new google.maps.LatLng(restaurant.escape("latitude"), restaurant.escape("longitude"));
+			var address = restaurant.escape("address").toLowerCase();
+			if ((address.indexOf(area[0]) > -1) || (address.indexOf("bellevue") > -1 && area[0] === "seattle")) {
 			
-			var contentString = restaurant.escape("name") + "\n" + restaurant.escape("address");
-			restaurant.info = new google.maps.InfoWindow({
-			      content: contentString,
-			      maxWidth: 200
-			  });
-      restaurant.marker = new google.maps.Marker({
-          map: that.map,
-					animation: google.maps.Animation.DROP,
-          position: pos,
-      });
+				var address = restaurant.escape("address");
+				var pos = new google.maps.LatLng(restaurant.escape("latitude"), restaurant.escape("longitude"));
+			
+				var contentString = restaurant.escape("name") + "\n" + restaurant.escape("address");
+				restaurant.info = new google.maps.InfoWindow({
+				      content: contentString,
+				      maxWidth: 200
+				  });
+	      restaurant.marker = new google.maps.Marker({
+	          map: that.map,
+						animation: google.maps.Animation.DROP,
+	          position: pos,
+	      });
+			} 
 			// google.maps.event.addListener(restaurant.marker, 'click', function() {
 // 			    restaurant.info.open(that.map, restaurant.marker);
 // 			});
