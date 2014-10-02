@@ -1,6 +1,6 @@
 NomNom.Views.ListingShow = Backbone.View.extend({
 	template: JST["listings/show"],
-	className: "restaurant-listing",
+	// className: "restaurant-listing",
 
 	initialize: function (options) {
 		this.rating = options.rating;

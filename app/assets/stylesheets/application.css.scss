@@ -149,7 +149,7 @@ body {
 
 .listingrating {
 	height: 20px;
-	widht: 100px;
+	width: 100px;
 }
 
 
@@ -346,6 +346,13 @@ body {
 	box-shadow: 0px 0px 10px #FF3333;
 }
 
+.listing-show {
+		margin: 20px; background: white;
+		margin-right: 40px;
+		.row {
+			margin-right: 0;
+		}
+}
 
 
 

@@ -61,22 +61,22 @@ seeds << Restaurant.new(name: "Show Dogs", address: "1020 Market Street, San Fra
 seeds << Restaurant.new(name: "Tú Lan", address: "8 6th Street, San Francisco, CA 94103, USA") #Vietnamese __________________________________________________________________ 44
 seeds << Restaurant.new(name: "Homeskillet", address: "1001 Market Street, San Francisco, CA 94103, USA") #American, Brunch & Breakfast, Burgers ____________________________ 45
 seeds << Restaurant.new(name: "Machine Coffee & Deli", address: "1024 Market Street, San Francisco, CA 94102, USA") #Cafes, Delis ___________________________________________ 46
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
 
 #Restaurants in New Haven
 seeds << Restaurant.new(name: "Frank Pepe Pizzeria Napoletana", address: "157 Wooster Street, New Haven, CT 06511, USA") #Italian, Pizza ____________________________________ #63
