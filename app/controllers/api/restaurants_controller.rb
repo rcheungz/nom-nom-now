@@ -16,6 +16,8 @@ class Api::RestaurantsController < ApplicationController
           end
         end
       end
+    else 
+      @restaurants = Restaurant.all
     end
     render :index
   end
