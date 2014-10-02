@@ -43,7 +43,7 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 		var area = this.searchArea.toLowerCase().split(", ");
 		restaurants.each(function (listing) {
 			var address = listing.escape("address").toLowerCase();
-			if((address.indexOf(area[0]) > -1)) {
+			if((address.indexOf(area[0]) > -1) || address.indexOf("bellevue") > -1) {
 				that.addListing(listing);
 			}
 		});
@@ -95,6 +95,7 @@ NomNom.Views.RestaurantIndex = Backbone.CompositeView.extend({
 		var that = this;
 		var marker = 0;
 		var restaurants = this.collection;
+		debugger;
 		restaurants.each(function(restaurant) {
 			var address = restaurant.escape("address");
 			var pos = new google.maps.LatLng(restaurant.escape("latitude"), restaurant.escape("longitude"));
