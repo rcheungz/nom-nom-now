@@ -3,3 +3,41 @@
 	<br>
 	<%= username %>
 </div> -->
+<div class="review-show">
+	<div class="row" style="margin-left: 10px">
+		<div class="col-xs-4">
+			<h4><%= username %> says</h4>
+		</div>
+		<div class="col-xs-8" style="padding-left: 20px; margin-top: 10px">
+			<div class="row">
+					<div class="col-xs-4">
+					 <% if (review.escape("rating") === "1") { %>
+					 	<img class="listingrating" src="/assets/1star.png" style="margin: 0px">
+					 <% } else if (review.escape("rating") === "1.5") { %>
+					 	<img class="listingrating" src="/assets/15stars.png">
+					 <% } else if (review.escape("rating") === "2") { %>
+					 	<img class="listingrating" src="/assets/2stars.png" >
+					 <% } else if (review.escape("rating") === "2.5") { %>
+					 	<img class="listingrating" src="/assets/25stars.png">
+					 <% } else if (review.escape("rating") === "3") { %>
+					 	<img class="listingrating" src="/assets/3stars.png" >
+					 <% } else if (review.escape("rating") === "3.5") { %>
+					 	<img class="listingrating" src="/assets/35stars.png">
+					 <% } else if (review.escape("rating") === "4") { %>
+					 	<img class="listingrating" src="/assets/4stars.png" >
+					 <% } else if (review.escape("rating") === "4.5") { %>
+					 	<img class="listingrating" src="/assets/45stars.png">
+					 <% } else if (review.escape("rating") === "5") { %>
+					 	<img class="listingrating" src="/assets/5stars.png" >
+						<% } %>
+				</div>
+				<div class="col-xs-6">
+					<%= review.escape("created_at").toString().split("T")[0] %>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 20px">
+				<%= review.escape("body") %>
+			</div>
+		</div>
+	</div>
+</div>

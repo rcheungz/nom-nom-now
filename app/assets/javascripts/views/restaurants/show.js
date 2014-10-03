@@ -41,7 +41,7 @@ NomNom.Views.RestaurantShow = Backbone.CompositeView.extend({
 		var reviewView = new NomNom.Views.ReviewShow({
 			model: review
 		});
-		this.addSubview(".review-list", reviewView);
+		this.addSubview(".reviews", reviewView); //.review-list
 	},
 	
 	_roundToHalf: function (num) {

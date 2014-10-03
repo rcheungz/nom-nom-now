@@ -30,7 +30,8 @@ NomNom.Views.ReviewForm = Backbone.CompositeView.extend({
 		var attrs = this.$el.serializeJSON();
 		attrs.review.restaurant_id = this.collection.restaurant.id;
 		// attrs.rating = this.getRating();
-		this.collection.create(attrs.review, {wait: true});
+		this.collection.create(attrs.review, {error: function () {
+		}, wait: true});
 		$("input[type='radio']").prop("checked", false);
 		$("textarea").val("");
 		// this.model.set(attrs);
