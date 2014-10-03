@@ -51,10 +51,15 @@ NomNom.Routers.Router = Backbone.Router.extend({
 	},
 	
 	search: function () {
-		var searchView = new NomNom.Views.RestaurantSearch({
-			collection: NomNom.Collections.restaurants
+		var that = this;
+		NomNom.Collections.restaurants.fetch( {
+			success: function () {
+				var searchView = new NomNom.Views.RestaurantSearch({
+					collection: NomNom.Collections.restaurants
+				});
+				that._swapView(searchView);
+			}
 		});
-		this._swapView(searchView);
 	},
 	
 	_swapView: function(view) {

@@ -89,19 +89,19 @@ seeds << Restaurant.new(name: "Machine Coffee & Deli", address: "1024 Market Str
 # seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
 
 #Restaurants in New Haven
-seeds << Restaurant.new(name: "Frank Pepe Pizzeria Napoletana", address: "157 Wooster Street, New Haven, CT 06511, USA") #Italian, Pizza ____________________________________ #63
-seeds << Restaurant.new(name: "Louis' Lunch", address: "263 Crown Street, New Haven, CT 06511, USA") #American, Burgers _____________________________________________________ #64
-seeds << Restaurant.new(name: "Modern Apizza", address: "874 State Street, New Haven, CT 06511, USA") #Pizza, Sandwiches ____________________________________________________ #65
-seeds << Restaurant.new(name: "Miya's Sushi", address: "68 Howe Street, New Haven, CT 06511, USA") #Sushi, Japanese _________________________________________________________ #66
-seeds << Restaurant.new(name: "Prime 16", address: "172 Temple Street, New Haven, CT 06510, USA") #American, Burgers, Gastropub _____________________________________________ #67
-seeds << Restaurant.new(name: "Caseus Fromagerie & Bistro", address: "93 Whitney Avenue, New Haven, CT 06510, USA") #American _______________________________________________ #68
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
-seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Frank Pepe Pizzeria Napoletana", address: "157 Wooster Street, New Haven, CT 06511, USA") #Italian, Pizza ____________________________________ #63
+# seeds << Restaurant.new(name: "Louis' Lunch", address: "263 Crown Street, New Haven, CT 06511, USA") #American, Burgers _____________________________________________________ #64
+# seeds << Restaurant.new(name: "Modern Apizza", address: "874 State Street, New Haven, CT 06511, USA") #Pizza, Sandwiches ____________________________________________________ #65
+# seeds << Restaurant.new(name: "Miya's Sushi", address: "68 Howe Street, New Haven, CT 06511, USA") #Sushi, Japanese _________________________________________________________ #66
+# seeds << Restaurant.new(name: "Prime 16", address: "172 Temple Street, New Haven, CT 06510, USA") #American, Burgers, Gastropub _____________________________________________ #67
+# seeds << Restaurant.new(name: "Caseus Fromagerie & Bistro", address: "93 Whitney Avenue, New Haven, CT 06510, USA") #American _______________________________________________ #68
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
+# seeds << Restaurant.new(name: "Paseo", address: "4225 Fremont Avenue North, Seattle, WA 98103, USA")
 
 
 
