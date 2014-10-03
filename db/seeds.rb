@@ -10,7 +10,17 @@
 #Guest Login Account
 seeds = [];
 #Restaurants in San Francisco
-User.create(username: "jeckchen@dinosaurs.me", password: "password")
+User.create(username: "Zach Chen", password: "password")
+User.create(username: "Kobe Bryant", password: "password")
+User.create(username: "Michael Jordan", password: "password")
+User.create(username: "Russell Wilson", password: "password")
+User.create(username: "Zooey Deschanel", password: "password")
+User.create(username: "Channing Tatum", password: "password")
+User.create(username: "Obama", password: "password")
+User.create(username: "The Most Interesting Man in the World", password: "password")
+User.create(username: "Kaley Cuoco", password: "password")
+User.create(username: "Analeigh Tipton", password: "password")
+
 seeds << Restaurant.new(name: "Ike's Place", address: "3489 16th Street, San Francisco, CA 94114, USA") #Category: Sandwiches _______________________________________________ 1
 seeds << Restaurant.new(name: "Brenda's French Soul Food", address: "652 Polk Street, San Francisco, CA 94102, USA") #Category Cajun French Soul Food _______________________ 2
 seeds << Restaurant.new(name: "Burmese Superstar", address: "309 Clement Street, San Francisco, CA 94118, USA") #Category Burmese ___________________________________________ 3                                        
