@@ -6,7 +6,6 @@ class Api::RestaurantsController < ApplicationController
     if params[:query]
       searchString = params[:query].downcase
       searchStrings = searchString.split(" ")
-      debugger;
       searchStrings.each do |string|
         list.each do |restaurant|
           category_names = restaurant.categories.collect { |category| category.name }
