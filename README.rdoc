@@ -1,28 +1,8 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+NomNomNow is an online platform that allows users to search for restaurants in the area and leave reviews for their 
+favorite, or not so favorite restaurants. NomNomNow also has a feature that allows the user to sit back and relax 
+while a restaurant within two miles of the user is randomly chosen, if the user is unsatisfied with the choice they 
+can easily ask for a new suggestion.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+NomNomNow is built on a Ruby on Rails backend and the backend is built on JavaScript and Backbone.js with twitter bootstrap.
